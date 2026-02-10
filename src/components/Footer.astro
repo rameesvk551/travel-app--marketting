@@ -1,0 +1,108 @@
+---
+const footerLinks = {
+  product: [
+    { label: 'AI Itinerary Builder', href: '/ai-itinerary' },
+    { label: 'Group Travel', href: '/group-travel' },
+    { label: 'Trekking & Tours', href: '/trekking-tours' },
+    { label: 'Pricing', href: '/pricing' },
+  ],
+  company: [
+    { label: 'About Us', href: '/about' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Contact', href: '/contact' },
+    { label: 'Careers', href: '#' },
+  ],
+  tools: [
+    { label: 'Visa Checker', href: '/tools/visa-checker' },
+    { label: 'Packing List', href: '/tools/packing-list' },
+    { label: 'Trek Readiness Quiz', href: '/tools/trek-quiz' },
+  ],
+  legal: [
+    { label: 'Privacy Policy', href: '#' },
+    { label: 'Terms of Service', href: '#' },
+    { label: 'Cookie Policy', href: '#' },
+  ],
+};
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-dark-500 text-white">
+  <!-- Main Footer -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12">
+      <!-- Brand -->
+      <div class="col-span-2 md:col-span-1">
+        <a href="/" class="flex items-center gap-2 mb-4">
+          <div class="w-10 h-10 bg-gradient-to-br from-teal-400 to-primary-400 rounded-xl flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+            </svg>
+          </div>
+          <span class="text-xl font-display font-bold">Wayon</span>
+        </a>
+        <p class="text-dark-200 text-sm leading-relaxed mb-6">
+          AI-powered travel planning. One workspace for flights, hotels, tours, treks & group trips.
+        </p>
+        <!-- Social -->
+        <div class="flex gap-3">
+          {['twitter', 'instagram', 'linkedin', 'youtube'].map(social => (
+            <a href="#" class="w-9 h-9 rounded-lg bg-dark-400 hover:bg-teal-500 flex items-center justify-center transition-colors" aria-label={social}>
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="4" />
+              </svg>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Product -->
+      <div>
+        <h4 class="font-semibold text-sm uppercase tracking-wider text-dark-200 mb-4">Product</h4>
+        <ul class="space-y-3">
+          {footerLinks.product.map(link => (
+            <li><a href={link.href} class="text-dark-200 hover:text-teal-400 transition-colors text-sm">{link.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h4 class="font-semibold text-sm uppercase tracking-wider text-dark-200 mb-4">Company</h4>
+        <ul class="space-y-3">
+          {footerLinks.company.map(link => (
+            <li><a href={link.href} class="text-dark-200 hover:text-teal-400 transition-colors text-sm">{link.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Free Tools -->
+      <div>
+        <h4 class="font-semibold text-sm uppercase tracking-wider text-dark-200 mb-4">Free Tools</h4>
+        <ul class="space-y-3">
+          {footerLinks.tools.map(link => (
+            <li><a href={link.href} class="text-dark-200 hover:text-teal-400 transition-colors text-sm">{link.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <h4 class="font-semibold text-sm uppercase tracking-wider text-dark-200 mb-4">Legal</h4>
+        <ul class="space-y-3">
+          {footerLinks.legal.map(link => (
+            <li><a href={link.href} class="text-dark-200 hover:text-teal-400 transition-colors text-sm">{link.label}</a></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="border-t border-dark-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p class="text-dark-300 text-sm">&copy; {currentYear} Wayon. All rights reserved.</p>
+      <p class="text-dark-300 text-sm">Made with ❤️ for travelers worldwide</p>
+    </div>
+  </div>
+</footer>

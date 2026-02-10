@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const values = [
+  { icon: '🎯', title: 'Simplicity First', desc: 'We believe travel planning should be joyful, not stressful. Every feature exists to reduce complexity.' },
+  { icon: '🤝', title: 'Traveler-Centric', desc: 'Built by travelers, for travelers. We test every feature on real trips before shipping.' },
+  { icon: '🌍', title: 'Inclusive Exploration', desc: 'From budget backpackers to luxury seekers — we design for everyone.' },
+  { icon: '🔒', title: 'Trust & Transparency', desc: 'No hidden fees, no dark patterns. Your data is yours, always.' },
+];
+
+const team = [
+  { name: 'Arjun Mehta', role: 'Founder & CEO', emoji: '👨‍💻' },
+  { name: 'Priya Sharma', role: 'Head of Product', emoji: '👩‍🎨' },
+  { name: 'Vikram Patel', role: 'Lead Engineer', emoji: '👨‍🔬' },
+  { name: 'Sneha Iyer', role: 'Head of Design', emoji: '👩‍💼' },
+];
+---
+
+<BaseLayout title="About" description="Learn about Wayon — the team, mission and values behind the AI-powered travel planning revolution.">
+  <Header />
+  <main>
+    <!-- Hero -->
+    <section class="pt-32 pb-16 bg-gradient-to-b from-primary-500 to-teal-600 text-white">
+      <div class="container-narrow text-center">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold mb-6">
+          We're on a Mission to <span class="text-accent-300">Simplify Travel</span>
+        </h1>
+        <p class="text-xl text-white/80 max-w-2xl mx-auto">
+          Born from the frustration of planning a group trip to Ladakh with 20 browser tabs and 3 WhatsApp groups.
+        </p>
+      </div>
+    </section>
+
+    <!-- Story -->
+    <section class="section-padding bg-white">
+      <div class="container-narrow max-w-3xl">
+        <h2 class="text-3xl font-display font-bold text-dark-500 mb-6">Our Story</h2>
+        <div class="prose prose-lg text-gray-600 space-y-4">
+          <p>In 2024, our founder tried to plan a 10-day Ladakh road trip with 8 friends. What should have been exciting turned into a nightmare of spreadsheets, forwarded emails, and "can you send that hotel link again?" messages.</p>
+          <p>That's when Wayon was born — an AI-powered workspace that brings flights, hotels, tours, treks, and group coordination into one intelligent platform.</p>
+          <p>Today, we've helped 10,000+ travelers plan trips across 50+ countries. Our AI doesn't just suggest — it orchestrates. And our group collaboration tools have saved countless friendships from the "who booked what?" argument.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="section-padding bg-gray-50">
+      <div class="container-narrow">
+        <h2 class="text-3xl font-display font-bold text-dark-500 mb-10 text-center">What We Stand For</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {values.map(v => (
+            <div class="card-hover p-6 text-center">
+              <div class="text-4xl mb-4">{v.icon}</div>
+              <h3 class="font-display font-bold text-dark-500 mb-2">{v.title}</h3>
+              <p class="text-sm text-gray-500">{v.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="section-padding bg-white">
+      <div class="container-narrow">
+        <h2 class="text-3xl font-display font-bold text-dark-500 mb-10 text-center">The Team</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {team.map(t => (
+            <div class="card-hover p-6 text-center">
+              <div class="w-20 h-20 rounded-full bg-gradient-to-br from-teal-100 to-primary-100 mx-auto mb-4 flex items-center justify-center text-4xl">{t.emoji}</div>
+              <h3 class="font-display font-bold text-dark-500">{t.name}</h3>
+              <p class="text-sm text-teal-600">{t.role}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-padding bg-gradient-to-r from-primary-500 to-teal-500 text-white text-center">
+      <div class="container-narrow">
+        <h2 class="text-3xl font-display font-bold mb-6">Join the Journey</h2>
+        <p class="text-lg text-white/80 mb-8">We're always looking for passionate travelers and engineers.</p>
+        <a href="/contact" class="btn-primary !bg-white !text-primary-500 hover:!bg-gray-100">Get in Touch</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

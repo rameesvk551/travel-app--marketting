@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const plans = [
+  {
+    name: 'Explorer',
+    price: 'Free',
+    period: 'forever',
+    description: 'Perfect for solo travelers and casual planners.',
+    features: [
+      'AI itinerary builder (3/month)',
+      'Flight & hotel search',
+      'Basic map view',
+      'Export to PDF',
+      'Email support',
+    ],
+    cta: 'Start Free',
+    popular: false,
+    gradient: 'from-gray-100 to-gray-50',
+    ctaClass: 'btn-secondary',
+  },
+  {
+    name: 'Voyager',
+    price: '₹499',
+    period: '/month',
+    description: 'For serious travelers who plan frequently.',
+    features: [
+      'Unlimited AI itineraries',
+      'Best price alerts',
+      'Advanced map with POIs',
+      'Group collaboration (up to 5)',
+      'Offline access',
+      'Priority booking',
+      'Chat support',
+    ],
+    cta: 'Start Free Trial',
+    popular: true,
+    gradient: 'from-primary-500 to-teal-500',
+    ctaClass: 'btn-primary',
+  },
+  {
+    name: 'Expedition',
+    price: '₹1,299',
+    period: '/month',
+    description: 'For group organizers and travel communities.',
+    features: [
+      'Everything in Voyager',
+      'Unlimited group members',
+      'Cost splitting & invoices',
+      'Custom branding for links',
+      'API access',
+      'Dedicated account manager',
+      'Phone support',
+    ],
+    cta: 'Contact Sales',
+    popular: false,
+    gradient: 'from-dark-500 to-dark-400',
+    ctaClass: 'btn-secondary',
+  },
+];
+---
+
+<BaseLayout title="Pricing" description="Simple, transparent pricing for Wayon. Free forever plan available. No hidden fees.">
+  <Header />
+  <main>
+    <section class="pt-32 pb-16 bg-gradient-to-b from-primary-500 to-teal-600 text-white">
+      <div class="container-narrow text-center">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold mb-6">
+          Simple, <span class="text-accent-300">Honest Pricing</span>
+        </h1>
+        <p class="text-xl text-white/80 max-w-2xl mx-auto">
+          Start free. Upgrade when you're ready. No surprises, no hidden fees.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-padding bg-gray-50">
+      <div class="container-narrow">
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {plans.map(plan => (
+            <div class={`relative rounded-2xl overflow-hidden ${plan.popular ? 'ring-2 ring-teal-400 shadow-xl scale-105' : 'shadow-md'}`}>
+              {plan.popular && (
+                <div class="bg-gradient-to-r from-teal-500 to-primary-500 text-white text-center py-2 text-sm font-semibold">
+                  Most Popular
+                </div>
+              )}
+              <div class="bg-white p-8">
+                <h3 class="font-display font-bold text-xl text-dark-500 mb-1">{plan.name}</h3>
+                <p class="text-sm text-gray-500 mb-4">{plan.description}</p>
+                <div class="mb-6">
+                  <span class="text-4xl font-display font-extrabold text-dark-500">{plan.price}</span>
+                  <span class="text-gray-400">{plan.period}</span>
+                </div>
+                <a href={plan.name === 'Expedition' ? '/contact' : '/#hero-input'} class={`${plan.ctaClass} w-full`}>
+                  {plan.cta}
+                </a>
+                <ul class="mt-6 space-y-3">
+                  {plan.features.map(feature => (
+                    <li class="flex items-start gap-2 text-sm text-gray-600">
+                      <svg class="w-4 h-4 text-teal-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,131 @@
+---
+const faqs = [
+  {
+    question: 'Is the AI itinerary reliable?',
+    answer: 'Yes! Our AI is trained on millions of real traveler experiences, verified reviews, and live data from booking platforms. Every suggestion is cross-referenced for accuracy. You can also customize any part of the plan to suit your preferences.',
+  },
+  {
+    question: 'Can I export my plans?',
+    answer: 'Absolutely. Export your itinerary as a beautiful PDF, share it via a unique link, or sync it with Google Calendar. Your plans are always accessible, even offline.',
+  },
+  {
+    question: 'Does it work offline?',
+    answer: 'Your saved itineraries are available offline through our progressive web app. You can view your full plan, maps, and booking confirmations without internet access.',
+  },
+  {
+    question: 'How does group sharing work?',
+    answer: 'Share a unique link with your travel group. Everyone can view, suggest edits, vote on activities, and chat — all in real-time. The trip organizer has final control over the itinerary.',
+  },
+  {
+    question: 'Is it really free?',
+    answer: 'The core AI itinerary builder is completely free — no credit card required. We earn through optional premium features like advanced collaboration tools, priority booking, and exclusive deals.',
+  },
+  {
+    question: 'What destinations are supported?',
+    answer: 'We support 50+ countries with detailed coverage of India, Nepal, Southeast Asia, Europe, and more. New destinations are added every month based on user demand.',
+  },
+];
+---
+
+<section class="section-padding bg-gradient-to-b from-white to-primary-50" id="cta-faq">
+  <div class="container-narrow">
+    <!-- Final CTA -->
+    <div class="text-center max-w-3xl mx-auto mb-20">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-dark-500 mb-6 text-balance">
+        Your Next Adventure <span class="gradient-text">Starts Here</span>
+      </h2>
+      <p class="text-lg text-gray-500 leading-relaxed mb-8">
+        Join thousands of travelers who plan smarter, save more, and explore with confidence.
+      </p>
+
+      <!-- Risk Reversal Badges -->
+      <div class="flex flex-wrap justify-center gap-4 mb-10">
+        {[
+          { icon: '🆓', text: 'Free to Start' },
+          { icon: '💳', text: 'No Credit Card' },
+          { icon: '🔒', text: 'Secure & Private' },
+          { icon: '⚡', text: 'Ready in 30 Seconds' },
+        ].map(badge => (
+          <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">
+            <span class="text-lg">{badge.icon}</span>
+            <span class="text-sm font-medium text-dark-500">{badge.text}</span>
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#hero-input" class="btn-primary text-xl !py-5 !px-10">
+          Build My Itinerary for Free
+          <svg class="w-6 h-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <h3 class="text-2xl sm:text-3xl font-display font-bold text-dark-500 mb-4">Frequently Asked Questions</h3>
+        <p class="text-gray-500">Everything you need to know before getting started.</p>
+      </div>
+
+      <div class="space-y-4" id="faq-list">
+        {faqs.map((faq, i) => (
+          <div class="faq-item card overflow-hidden" data-faq-index={i}>
+            <button 
+              class="faq-toggle w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+              aria-expanded="false"
+            >
+              <span class="font-semibold text-dark-500 pr-4">{faq.question}</span>
+              <svg class="faq-chevron w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="faq-content hidden px-6 pb-6">
+              <p class="text-gray-500 leading-relaxed">{faq.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
+      },
+    })),
+  })} />
+</section>
+
+<script>
+  document.querySelectorAll('.faq-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const item = toggle.closest('.faq-item');
+      const content = item?.querySelector('.faq-content');
+      const chevron = item?.querySelector('.faq-chevron');
+      const isOpen = !content?.classList.contains('hidden');
+
+      // Close all
+      document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+      document.querySelectorAll('.faq-chevron').forEach(c => c.classList.remove('rotate-180'));
+      document.querySelectorAll('.faq-toggle').forEach(t => t.setAttribute('aria-expanded', 'false'));
+
+      // Toggle current
+      if (!isOpen) {
+        content?.classList.remove('hidden');
+        chevron?.classList.add('rotate-180');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>

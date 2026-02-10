@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const steps = [
+  { num: '1', title: 'Share Your Vision', desc: 'Tell the AI about your dream trip — destination, dates, group size, budget, and interests. The more detail, the better the plan.', icon: '💭' },
+  { num: '2', title: 'AI Crafts Your Plan', desc: 'In under 30 seconds, our AI analyzes thousands of data points to build a personalized, day-by-day itinerary.', icon: '🤖' },
+  { num: '3', title: 'Review & Customize', desc: 'Every suggestion is fully editable. Swap hotels, add treks, adjust timings — make it uniquely yours.', icon: '✏️' },
+  { num: '4', title: 'Book Everything', desc: 'One-click booking for flights, hotels, tours, and activities. Best prices aggregated from all major platforms.', icon: '🎯' },
+];
+
+const capabilities = [
+  'Multi-city route optimization',
+  'Budget allocation across categories',
+  'Pace-based scheduling (relaxed vs packed)',
+  'Weather & season intelligence',
+  'Local transport recommendations',
+  'Restaurant & café suggestions',
+  'Safety & visa advisories',
+  'Offline downloadable plans',
+];
+---
+
+<BaseLayout title="AI Itinerary Builder" description="Discover how Wayon's AI builds personalized travel itineraries in seconds. From idea to booked trip in 4 steps.">
+  <Header />
+  <main>
+    <section class="pt-32 pb-16 bg-gradient-to-b from-primary-500 to-teal-600 text-white">
+      <div class="container-narrow text-center">
+        <div class="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 mb-6 text-sm">
+          <span>🧠</span> Powered by Advanced AI
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold mb-6">
+          Your AI <span class="text-accent-300">Travel Architect</span>
+        </h1>
+        <p class="text-xl text-white/80 max-w-2xl mx-auto mb-8">
+          Tell us your dream. Our AI builds the plan. You live the adventure.
+        </p>
+        <a href="/#hero-input" class="btn-primary">Try It Now — Free</a>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section-padding bg-white">
+      <div class="container-narrow">
+        <h2 class="text-3xl font-display font-bold text-dark-500 mb-12 text-center">How the AI Works</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {steps.map(s => (
+            <div class="text-center">
+              <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-100 to-teal-100 mx-auto mb-4 flex items-center justify-center text-3xl">{s.icon}</div>
+              <div class="text-sm font-bold text-teal-500 mb-1">Step {s.num}</div>
+              <h3 class="font-display font-bold text-dark-500 mb-2">{s.title}</h3>
+              <p class="text-sm text-gray-500">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Capabilities -->
+    <section class="section-padding bg-gray-50">
+      <div class="container-narrow">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl font-display font-bold text-dark-500 mb-6">What Our AI Can Do</h2>
+            <p class="text-gray-500 mb-8 leading-relaxed">Our AI doesn't just list places — it orchestrates your entire trip with real intelligence, considering weather, distances, pace, and your unique preferences.</p>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {capabilities.map(cap => (
+                <li class="flex items-center gap-2 text-sm text-gray-600">
+                  <svg class="w-4 h-4 text-teal-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {cap}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-gradient-to-br from-primary-100 to-teal-100 rounded-2xl p-8 min-h-[300px] flex items-center justify-center">
+            <div class="text-center">
+              <div class="text-6xl mb-4">🤖</div>
+              <p class="text-primary-600 font-semibold">AI itinerary generation preview</p>
+              <p class="text-sm text-primary-400 mt-2">Personalized for each traveler</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding bg-gradient-to-r from-primary-500 to-teal-500 text-white text-center">
+      <div class="container-narrow">
+        <h2 class="text-3xl font-display font-bold mb-6">Let AI Plan Your Next Trip</h2>
+        <a href="/#hero-input" class="btn-primary !bg-white !text-primary-500 hover:!bg-gray-100">Build My Itinerary — Free</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

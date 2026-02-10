@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const visaData: Record<string, Record<string, {required: boolean; type: string; duration: string; note: string}>> = {
+  india: {
+    nepal: { required: false, type: 'Visa-Free', duration: 'Unlimited', note: 'No visa required. Carry valid passport or Voter ID.' },
+    thailand: { required: true, type: 'Visa on Arrival', duration: '15 days', note: 'VOA available at airports. ₹2,000 fee. Passport must be valid for 6 months.' },
+    bali: { required: false, type: 'Visa-Free', duration: '30 days', note: 'Free visa on arrival for tourism. Extendable for 30 more days.' },
+    malaysia: { required: false, type: 'eVisa / Visa-Free', duration: '30 days', note: 'Indian passport holders get visa-free entry for up to 30 days.' },
+    japan: { required: true, type: 'Embassy Visa', duration: '15-90 days', note: 'Apply at VFS Global. Processing takes 5-7 working days.' },
+    usa: { required: true, type: 'B1/B2 Visa', duration: '10 years (multi-entry)', note: 'Requires interview at US Embassy. Apply via DS-160 form.' },
+    uk: { required: true, type: 'Standard Visitor Visa', duration: '6 months', note: 'Apply online. Biometrics required. 3-week processing.' },
+    dubai: { required: true, type: 'eVisa', duration: '30 days', note: 'Apply online. ₹5,000 approx. 96-hour visa also available.' },
+    singapore: { required: true, type: 'eVisa', duration: '30 days', note: 'Apply through authorized agents. Processing: 3-5 days.' },
+    maldives: { required: false, type: 'Visa on Arrival', duration: '30 days', note: 'Free VOA for all nationalities. Hotel booking confirmation needed.' },
+    srilanka: { required: true, type: 'ETA (Electronic)', duration: '30 days', note: 'Apply online at eta.gov.lk. ₹2,500 approx. Instant approval.' },
+    bhutan: { required: false, type: 'Permit on Arrival', duration: 'As per permit', note: 'No visa needed for Indians. Entry permit issued at border.' },
+  },
+};
+---
+
+<BaseLayout title="Visa Checker" description="Instantly check visa requirements for your destination. Free tool — no signup required.">
+  <Header />
+  <main>
+    <section class="pt-32 pb-16 bg-gradient-to-b from-primary-500 to-teal-600 text-white">
+      <div class="container-narrow text-center">
+        <div class="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 mb-6 text-sm">
+          <span>🛂</span> Free Tool
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-display font-extrabold mb-6">
+          Visa <span class="text-accent-300">Checker</span>
+        </h1>
+        <p class="text-xl text-white/80">Instantly check if you need a visa for your next destination.</p>
+      </div>
+    </section>
+
+    <section class="section-padding bg-white">
+      <div class="container-narrow max-w-xl">
+        <div class="card p-8">
+          <div class="space-y-6">
+            <div>
+              <label class="block text-sm font-semibold text-dark-500 mb-2">Your Nationality</label>
+              <select id="visa-nationality" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-300 focus:border-teal-500 bg-white text-dark-500">
+                <option value="india">🇮🇳 India</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-dark-500 mb-2">Destination Country</label>
+              <select id="visa-destination" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-300 focus:border-teal-500 bg-white text-dark-500">
+                <option value="">Select destination...</option>
+                <option value="nepal">🇳🇵 Nepal</option>
+                <option value="thailand">🇹🇭 Thailand</option>
+                <option value="bali">🇮🇩 Bali (Indonesia)</option>
+                <option value="malaysia">🇲🇾 Malaysia</option>
+                <option value="japan">🇯🇵 Japan</option>
+                <option value="usa">🇺🇸 United States</option>
+                <option value="uk">🇬🇧 United Kingdom</option>
+                <option value="dubai">🇦🇪 Dubai (UAE)</option>
+                <option value="singapore">🇸🇬 Singapore</option>
+                <option value="maldives">🇲🇻 Maldives</option>
+                <option value="srilanka">🇱🇰 Sri Lanka</option>
+                <option value="bhutan">🇧🇹 Bhutan</option>
+              </select>
+            </div>
+            <button id="visa-check-btn" class="btn-primary w-full">Check Visa Requirements</button>
+
+            <div id="visa-result" class="hidden"></div>
+          </div>
+        </div>
+
+        <div class="mt-8 bg-teal-50 rounded-2xl p-6 text-center border border-teal-100">
+          <p class="text-sm text-gray-600 mb-3">💡 Planning your trip? Let AI handle the entire itinerary.</p>
+          <a href="/#hero-input" class="btn-primary !py-3 !text-sm">Build My Itinerary — Free</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script define:vars={{ visaData }}>
+  document.getElementById('visa-check-btn')?.addEventListener('click', () => {
+    const nationality = document.getElementById('visa-nationality').value;
+    const destination = document.getElementById('visa-destination').value;
+    const resultDiv = document.getElementById('visa-result');
+
+    if (!destination) {
+      alert('Please select a destination');
+      return;
+    }
+
+    const data = visaData[nationality]?.[destination];
+    if (!data) {
+      resultDiv.innerHTML = '<div class="bg-gray-50 rounded-xl p-6 text-center text-gray-500">Data not available for this combination.</div>';
+      resultDiv.classList.remove('hidden');
+      return;
+    }
+
+    const isVisaFree = !data.required;
+    const bgColor = isVisaFree ? 'bg-nature-50 border-nature-200' : 'bg-accent-50 border-accent-200';
+    const iconColor = isVisaFree ? 'text-nature-500' : 'text-accent-500';
+    const icon = isVisaFree ? '✅' : '📋';
+
+    resultDiv.innerHTML = `
+      <div class="${bgColor} border rounded-xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-3xl">${icon}</span>
+          <div>
+            <h3 class="font-bold text-dark-500 text-lg">${data.type}</h3>
+            <p class="text-sm text-gray-500">Duration: ${data.duration}</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 leading-relaxed">${data.note}</p>
+      </div>
+    `;
+    resultDiv.classList.remove('hidden');
+  });
+</script>

@@ -1,0 +1,83 @@
+---
+const painPoints = [
+  {
+    icon: '🗂️',
+    title: '20 Browser Tabs',
+    description: 'Flights on one tab, hotels on another, activities on five more. Information overload.',
+    color: 'from-red-100 to-red-50',
+    iconBg: 'bg-red-100',
+  },
+  {
+    icon: '📊',
+    title: 'Spreadsheet Chaos',
+    description: 'Shared docs with conflicting dates, broken formulas, and no real-time updates.',
+    color: 'from-orange-100 to-orange-50',
+    iconBg: 'bg-orange-100',
+  },
+  {
+    icon: '💬',
+    title: 'WhatsApp Madness',
+    description: '"Where are we staying?" gets asked 47 times. Buried links. Lost context.',
+    color: 'from-green-100 to-green-50',
+    iconBg: 'bg-green-100',
+  },
+  {
+    icon: '📧',
+    title: 'Booking Email Hell',
+    description: 'Confirmation emails from 6 different sites. Can\'t find the one you need.',
+    color: 'from-blue-100 to-blue-50',
+    iconBg: 'bg-blue-100',
+  },
+];
+---
+
+<section class="section-padding bg-white" id="problem">
+  <div class="container-narrow">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 bg-red-50 text-red-600 rounded-full px-4 py-2 mb-6 text-sm font-medium">
+        <span>😫</span>
+        Sound familiar?
+      </div>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-dark-500 mb-6 text-balance">
+        Stop Juggling <span class="text-red-500">10 Apps</span> to Plan One Trip
+      </h2>
+      <p class="text-lg text-gray-500 leading-relaxed">
+        The average trip takes <strong class="text-dark-500">8+ hours</strong> of research across
+        <strong class="text-dark-500">12 different platforms</strong>. You deserve better.
+      </p>
+    </div>
+
+    <!-- Pain Grid -->
+    <div class="grid sm:grid-cols-2 gap-6 mb-12">
+      {painPoints.map((pain, i) => (
+        <div class={`relative rounded-2xl bg-gradient-to-br ${pain.color} p-8 border border-gray-100 group hover:shadow-lg transition-all duration-300`}>
+          <!-- Strikethrough line on hover -->
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+            <div class="w-3/4 h-0.5 bg-red-300 rotate-[-3deg]"></div>
+          </div>
+          
+          <div class={`w-14 h-14 rounded-xl ${pain.iconBg} flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform`}>
+            {pain.icon}
+          </div>
+          <h3 class="text-xl font-display font-bold text-dark-500 mb-2 group-hover:text-red-600 transition-colors">
+            {pain.title}
+          </h3>
+          <p class="text-gray-600 leading-relaxed group-hover:text-gray-400 transition-colors">
+            {pain.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Transition -->
+    <div class="text-center">
+      <div class="inline-flex items-center gap-3 bg-gradient-to-r from-primary-50 to-teal-50 rounded-2xl px-8 py-4 border border-primary-100">
+        <span class="text-3xl">👇</span>
+        <p class="text-lg font-medium text-primary-600">
+          There's a <span class="font-bold">smarter way</span> to plan your next adventure
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

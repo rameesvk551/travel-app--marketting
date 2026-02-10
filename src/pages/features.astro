@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const features = [
+  {
+    category: 'AI Planning',
+    items: [
+      { icon: '🧠', title: 'Smart Itinerary Builder', desc: 'AI generates a complete day-by-day plan based on your preferences, budget, and travel style.' },
+      { icon: '🌤️', title: 'Weather-Aware Planning', desc: 'Automatically adjusts your itinerary based on real-time weather forecasts and seasonal patterns.' },
+      { icon: '💡', title: 'Smart Suggestions', desc: 'Get recommendations for hidden gems, local restaurants, and off-beat experiences.' },
+      { icon: '📊', title: 'Budget Optimization', desc: 'AI finds the best value options and helps you allocate your budget wisely across the trip.' },
+    ],
+  },
+  {
+    category: 'Booking & Aggregation',
+    items: [
+      { icon: '✈️', title: 'Flight Aggregation', desc: 'Compare flights from 20+ airlines with transparent pricing and flexible date search.' },
+      { icon: '🏨', title: 'Hotel Comparison', desc: 'Find the best deals across Booking.com, OYO, MakeMyTrip and more — all in one place.' },
+      { icon: '🎫', title: 'Tour & Activity Booking', desc: 'Book guided tours, adventure activities, and local experiences from verified operators.' },
+      { icon: '💰', title: 'Best Price Guarantee', desc: 'We match any lower price found on competing platforms. Save money effortlessly.' },
+    ],
+  },
+  {
+    category: 'Collaboration',
+    items: [
+      { icon: '👥', title: 'Group Planning', desc: 'Invite your travel crew and plan together in real-time with shared editing access.' },
+      { icon: '🗳️', title: 'Activity Voting', desc: 'Let the group vote on activities, restaurants, and hotels to resolve conflicts democratically.' },
+      { icon: '💬', title: 'In-App Chat', desc: 'Discussion threads attached to each day of your itinerary. No more WhatsApp chaos.' },
+      { icon: '💳', title: 'Cost Splitting', desc: 'Automatic expense tracking and fair cost splitting between all group members.' },
+    ],
+  },
+  {
+    category: 'Adventure & Experiences',
+    items: [
+      { icon: '🏔️', title: 'Trek Planning', desc: 'Detailed trek itineraries with difficulty ratings, gear checklists, and acclimatization schedules.' },
+      { icon: '🗺️', title: 'Interactive Maps', desc: 'See your entire route on a map with distances, drive times, and stop suggestions.' },
+      { icon: '📱', title: 'Offline Access', desc: 'Download your itinerary and maps for offline use in remote areas with no connectivity.' },
+      { icon: '🔗', title: 'Share Beautiful Links', desc: 'Generate a professional travel plan link to share with friends, family, or on social media.' },
+    ],
+  },
+];
+---
+
+<BaseLayout title="Features" description="Explore all features of Wayon — AI itinerary builder, flight & hotel aggregation, group collaboration, trek planning, and more.">
+  <Header />
+  <main>
+    <!-- Hero -->
+    <section class="pt-32 pb-16 bg-gradient-to-b from-primary-500 to-teal-600 text-white">
+      <div class="container-narrow text-center">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold mb-6">
+          Built for the Way <span class="text-accent-300">You Travel</span>
+        </h1>
+        <p class="text-xl text-white/80 max-w-2xl mx-auto">
+          From solo backpackers to group trip organizers — discover every feature that makes travel planning joyful.
+        </p>
+      </div>
+    </section>
+
+    <!-- Feature Categories -->
+    {features.map((cat, catIdx) => (
+      <section class={`section-padding ${catIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
+        <div class="container-narrow">
+          <h2 class="text-2xl sm:text-3xl font-display font-bold text-dark-500 mb-10 text-center">{cat.category}</h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {cat.items.map(item => (
+              <div class="card-hover p-6 text-center">
+                <div class="text-4xl mb-4">{item.icon}</div>
+                <h3 class="font-display font-bold text-dark-500 mb-2">{item.title}</h3>
+                <p class="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <!-- CTA -->
+    <section class="section-padding bg-gradient-to-r from-primary-500 to-teal-500 text-white text-center">
+      <div class="container-narrow">
+        <h2 class="text-3xl sm:text-4xl font-display font-bold mb-6">Ready to Plan Smarter?</h2>
+        <p class="text-lg text-white/80 mb-8 max-w-xl mx-auto">Start your first AI-generated itinerary in 30 seconds. Free forever.</p>
+        <a href="/#hero-input" class="btn-primary !bg-white !text-primary-500 hover:!bg-gray-100">Start Planning Free</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

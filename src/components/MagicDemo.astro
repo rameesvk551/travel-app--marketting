@@ -1,0 +1,161 @@
+---
+const steps = [
+  {
+    step: '01',
+    title: 'Tell Us Where',
+    description: 'Type your destination, dates, and travel style. Solo, couple, family, or group — we adapt.',
+    icon: '🔍',
+    color: 'from-primary-500 to-primary-600',
+    visual: 'search',
+  },
+  {
+    step: '02',
+    title: 'AI Builds Your Plan',
+    description: 'Our AI analyzes thousands of options to create a personalized day-by-day itinerary in seconds.',
+    icon: '🤖',
+    color: 'from-teal-500 to-teal-600',
+    visual: 'ai',
+  },
+  {
+    step: '03',
+    title: 'See It on the Map',
+    description: 'Your route visualized on an interactive map. Optimized for distance, time, and experiences.',
+    icon: '🗺️',
+    color: 'from-nature-500 to-nature-600',
+    visual: 'map',
+  },
+  {
+    step: '04',
+    title: 'Customize Everything',
+    description: 'Swap hotels, add treks, change restaurants. Drag, drop, and make it yours.',
+    icon: '✏️',
+    color: 'from-purple-500 to-purple-600',
+    visual: 'edit',
+  },
+  {
+    step: '05',
+    title: 'Book in One Click',
+    description: 'Flights, hotels, tours — book everything from your itinerary. Best prices guaranteed.',
+    icon: '🎯',
+    color: 'from-accent-500 to-accent-600',
+    visual: 'book',
+  },
+];
+---
+
+<section class="section-padding bg-gradient-to-b from-white to-gray-50" id="how-it-works">
+  <div class="container-narrow">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 bg-teal-50 text-teal-600 rounded-full px-4 py-2 mb-6 text-sm font-medium">
+        <span>✨</span>
+        Magic in 5 Steps
+      </div>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-dark-500 mb-6 text-balance">
+        From <span class="gradient-text">"Where Should I Go?"</span> to <span class="gradient-text">"I'm Booked!"</span>
+      </h2>
+      <p class="text-lg text-gray-500 leading-relaxed">
+        Watch your dream trip come together in real-time. No research. No stress. Just pure excitement.
+      </p>
+    </div>
+
+    <!-- Steps -->
+    <div class="relative">
+      <!-- Vertical connector line (desktop) -->
+      <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-200 via-teal-200 to-accent-200 hidden lg:block lg:left-1/2 lg:-translate-x-px"></div>
+
+      <div class="space-y-12 lg:space-y-16">
+        {steps.map((step, i) => (
+          <div class={`relative flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-12 ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+            <!-- Step Number (on the line) -->
+            <div class="absolute left-4 lg:left-1/2 lg:-translate-x-1/2 z-10">
+              <div class={`w-10 h-10 rounded-full bg-gradient-to-br ${step.color} text-white flex items-center justify-center text-sm font-bold shadow-lg`}>
+                {step.step}
+              </div>
+            </div>
+
+            <!-- Content Card -->
+            <div class={`flex-1 ml-20 lg:ml-0 ${i % 2 === 1 ? 'lg:pr-20' : 'lg:pl-20'}`}>
+              <div class="card-hover p-8">
+                <div class="flex items-start gap-4">
+                  <span class="text-4xl">{step.icon}</span>
+                  <div>
+                    <h3 class="text-xl font-display font-bold text-dark-500 mb-2">{step.title}</h3>
+                    <p class="text-gray-500 leading-relaxed">{step.description}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Visual Mock -->
+            <div class={`flex-1 ml-20 lg:ml-0 ${i % 2 === 1 ? 'lg:pl-20' : 'lg:pr-20'}`}>
+              <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6 border border-gray-200 min-h-[140px] flex items-center justify-center">
+                {step.visual === 'search' && (
+                  <div class="w-full max-w-xs">
+                    <div class="bg-white rounded-lg shadow-sm p-3 flex items-center gap-2">
+                      <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                      <span class="text-sm text-gray-500">Manali, Himachal Pradesh...</span>
+                    </div>
+                    <div class="mt-2 flex gap-2">
+                      <span class="text-xs bg-primary-50 text-primary-600 px-2 py-1 rounded-full">5 Days</span>
+                      <span class="text-xs bg-teal-50 text-teal-600 px-2 py-1 rounded-full">Adventure</span>
+                      <span class="text-xs bg-accent-50 text-accent-600 px-2 py-1 rounded-full">₹15K Budget</span>
+                    </div>
+                  </div>
+                )}
+                {step.visual === 'ai' && (
+                  <div class="w-full max-w-xs space-y-2">
+                    <div class="h-3 bg-teal-200 rounded-full w-full animate-shimmer" style="background: linear-gradient(90deg, #b3e8e4 25%, #0D9488 50%, #b3e8e4 75%); background-size: 200% 100%;"></div>
+                    <div class="h-3 bg-teal-200 rounded-full w-4/5 animate-shimmer animate-delay-200" style="background: linear-gradient(90deg, #b3e8e4 25%, #0D9488 50%, #b3e8e4 75%); background-size: 200% 100%;"></div>
+                    <div class="h-3 bg-teal-200 rounded-full w-3/5 animate-shimmer animate-delay-400" style="background: linear-gradient(90deg, #b3e8e4 25%, #0D9488 50%, #b3e8e4 75%); background-size: 200% 100%;"></div>
+                    <p class="text-xs text-teal-600 mt-2 font-medium">Generating personalized plan...</p>
+                  </div>
+                )}
+                {step.visual === 'map' && (
+                  <div class="relative w-full max-w-xs">
+                    <svg viewBox="0 0 200 100" class="w-full">
+                      <path d="M20 80 Q60 20 100 50 Q140 80 180 30" fill="none" stroke="#0D9488" stroke-width="2" stroke-dasharray="4,4" />
+                      <circle cx="20" cy="80" r="5" fill="#0B3D6B" />
+                      <circle cx="100" cy="50" r="5" fill="#F97316" />
+                      <circle cx="180" cy="30" r="5" fill="#16A34A" />
+                    </svg>
+                    <div class="flex justify-between text-xs text-gray-500 mt-1">
+                      <span>Delhi</span><span>Manali</span><span>Kasol</span>
+                    </div>
+                  </div>
+                )}
+                {step.visual === 'edit' && (
+                  <div class="w-full max-w-xs space-y-2">
+                    <div class="bg-white rounded-lg p-2 shadow-sm flex items-center justify-between">
+                      <span class="text-xs">🏨 Hotel Riverside</span>
+                      <span class="text-xs text-accent-500 cursor-pointer">Swap ↔</span>
+                    </div>
+                    <div class="bg-white rounded-lg p-2 shadow-sm flex items-center justify-between border-2 border-teal-300">
+                      <span class="text-xs">🏔️ Hampta Pass Trek</span>
+                      <span class="text-xs text-nature-500">Added ✓</span>
+                    </div>
+                    <div class="bg-white rounded-lg p-2 shadow-sm flex items-center justify-between opacity-50">
+                      <span class="text-xs line-through">🍽️ Fine Dining</span>
+                      <span class="text-xs text-red-400">Removed</span>
+                    </div>
+                  </div>
+                )}
+                {step.visual === 'book' && (
+                  <div class="w-full max-w-xs text-center">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-nature-100 rounded-full mb-3">
+                      <svg class="w-8 h-8 text-nature-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <p class="text-sm font-bold text-dark-500">All Booked!</p>
+                    <p class="text-xs text-gray-500">3 hotels • 1 flight • 2 tours</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

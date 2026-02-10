@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const treks = [
+  { name: 'Hampta Pass', location: 'Himachal Pradesh', days: '5 Days', difficulty: 'Moderate', altitude: '4,270m', price: '₹8,500', color: 'from-nature-500 to-teal-500' },
+  { name: 'Valley of Flowers', location: 'Uttarakhand', days: '6 Days', difficulty: 'Moderate', altitude: '3,658m', price: '₹9,200', color: 'from-teal-500 to-primary-500' },
+  { name: 'Chadar Trek', location: 'Ladakh', days: '9 Days', difficulty: 'Difficult', altitude: '3,390m', price: '₹18,500', color: 'from-primary-500 to-blue-600' },
+  { name: 'Kedarkantha', location: 'Uttarakhand', days: '4 Days', difficulty: 'Easy-Moderate', altitude: '3,810m', price: '₹6,500', color: 'from-accent-500 to-nature-500' },
+  { name: 'Goechala', location: 'Sikkim', days: '10 Days', difficulty: 'Difficult', altitude: '4,940m', price: '₹15,000', color: 'from-purple-500 to-primary-500' },
+  { name: 'Brahmatal', location: 'Uttarakhand', days: '5 Days', difficulty: 'Moderate', altitude: '3,475m', price: '₹7,500', color: 'from-blue-500 to-teal-500' },
+];
+
+const tours = [
+  { name: 'Golden Triangle', desc: 'Delhi, Agra, Jaipur — history & culture', days: '5 Days', emoji: '🏛️' },
+  { name: 'Kerala Backwaters', desc: 'Houseboats, spices, and serenity', days: '4 Days', emoji: '🚣' },
+  { name: 'Goa Beach Hopping', desc: 'Sun, sand, and seafood', days: '3 Days', emoji: '🏖️' },
+  { name: 'Rajasthan Heritage', desc: 'Forts, palaces, and desert camps', days: '7 Days', emoji: '🏰' },
+];
+---
+
+<BaseLayout title="Trekking & Tours" description="Discover curated treks and tours across India. Himalayan adventures, cultural tours, and beach escapes — book with verified operators.">
+  <Header />
+  <main>
+    <section class="pt-32 pb-16 bg-gradient-to-b from-nature-600 to-teal-600 text-white">
+      <div class="container-narrow text-center">
+        <div class="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 mb-6 text-sm">
+          <span>🏔️</span> Adventure Awaits
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold mb-6">
+          Treks & Tours <span class="text-accent-300">You'll Never Forget</span>
+        </h1>
+        <p class="text-xl text-white/80 max-w-2xl mx-auto mb-8">
+          From Himalayan summits to cultural road trips — curated experiences with verified local operators.
+        </p>
+        <a href="/tools/trek-quiz" class="btn-primary">Take the Trek Quiz</a>
+      </div>
+    </section>
+
+    <!-- Treks -->
+    <section class="section-padding bg-white">
+      <div class="container-narrow">
+        <h2 class="text-3xl font-display font-bold text-dark-500 mb-10 text-center">Popular Treks</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {treks.map(trek => (
+            <div class="card-hover overflow-hidden">
+              <div class={`h-40 bg-gradient-to-br ${trek.color} flex items-center justify-center`}>
+                <div class="text-center text-white">
+                  <div class="text-4xl mb-2">🏔️</div>
+                  <div class="font-bold text-lg">{trek.name}</div>
+                </div>
+              </div>
+              <div class="p-5">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm text-gray-500">📍 {trek.location}</span>
+                  <span class="text-sm font-bold text-teal-600">{trek.price}</span>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-gray-400">
+                  <span>🗓️ {trek.days}</span>
+                  <span>⛰️ {trek.altitude}</span>
+                  <span class={`px-2 py-0.5 rounded-full ${trek.difficulty === 'Difficult' ? 'bg-red-100 text-red-600' : trek.difficulty === 'Moderate' ? 'bg-yellow-100 text-yellow-700' : 'bg-green-100 text-green-600'}`}>{trek.difficulty}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Tours -->
+    <section class="section-padding bg-gray-50">
+      <div class="container-narrow">
+        <h2 class="text-3xl font-display font-bold text-dark-500 mb-10 text-center">Curated Tours</h2>
+        <div class="grid sm:grid-cols-2 gap-6">
+          {tours.map(tour => (
+            <div class="card-hover p-6 flex items-start gap-4">
+              <div class="text-4xl">{tour.emoji}</div>
+              <div>
+                <h3 class="font-display font-bold text-dark-500">{tour.name}</h3>
+                <p class="text-sm text-gray-500 mb-1">{tour.desc}</p>
+                <span class="text-xs text-teal-600 font-medium">{tour.days}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding bg-gradient-to-r from-nature-500 to-teal-500 text-white text-center">
+      <div class="container-narrow">
+        <h2 class="text-3xl font-display font-bold mb-6">Find Your Perfect Adventure</h2>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/tools/trek-quiz" class="btn-primary !bg-white !text-nature-600 hover:!bg-gray-100">Take the Trek Quiz</a>
+          <a href="/#hero-input" class="btn-primary !bg-transparent !border-2 !border-white hover:!bg-white/10">Plan Custom Trip</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

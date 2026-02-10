@@ -1,0 +1,190 @@
+---
+---
+
+<section class="section-padding bg-gradient-to-b from-gray-50 to-white" id="utility-tool">
+  <div class="container-narrow">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="inline-flex items-center gap-2 bg-accent-50 text-accent-600 rounded-full px-4 py-2 mb-6 text-sm font-medium">
+        <span>🧮</span>
+        Free Tool — No Signup Required
+      </div>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-dark-500 mb-6 text-balance">
+        Trip Budget <span class="gradient-text">Calculator</span>
+      </h2>
+      <p class="text-lg text-gray-500 leading-relaxed">
+        Get an instant estimate for your next trip. Flights, hotels, food, activities — all calculated.
+      </p>
+    </div>
+
+    <!-- Calculator Widget -->
+    <div class="max-w-2xl mx-auto">
+      <div class="card p-8">
+        <div class="space-y-6" id="budget-calculator">
+          <!-- Destination -->
+          <div>
+            <label class="block text-sm font-semibold text-dark-500 mb-2">Destination</label>
+            <select id="calc-destination" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-300 focus:border-teal-500 bg-white text-dark-500">
+              <option value="">Select destination...</option>
+              <option value="manali">Manali, Himachal Pradesh</option>
+              <option value="goa">Goa</option>
+              <option value="rajasthan">Rajasthan (Jaipur-Udaipur)</option>
+              <option value="ladakh">Ladakh</option>
+              <option value="kerala">Kerala</option>
+              <option value="andaman">Andaman Islands</option>
+              <option value="nepal">Nepal (Kathmandu-Pokhara)</option>
+              <option value="bali">Bali, Indonesia</option>
+              <option value="thailand">Thailand (Bangkok-Phuket)</option>
+            </select>
+          </div>
+
+          <!-- Duration & Travelers -->
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-semibold text-dark-500 mb-2">Duration (Days)</label>
+              <input type="number" id="calc-days" min="1" max="30" value="5" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-300 focus:border-teal-500 bg-white text-dark-500" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-dark-500 mb-2">Number of Travelers</label>
+              <input type="number" id="calc-travelers" min="1" max="20" value="2" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-300 focus:border-teal-500 bg-white text-dark-500" />
+            </div>
+          </div>
+
+          <!-- Travel Style -->
+          <div>
+            <label class="block text-sm font-semibold text-dark-500 mb-3">Travel Style</label>
+            <div class="grid grid-cols-3 gap-3">
+              <button class="calc-style-btn p-3 rounded-xl border-2 border-gray-200 text-center hover:border-teal-400 transition-colors focus:outline-none" data-style="budget">
+                <span class="text-2xl block mb-1">🎒</span>
+                <span class="text-xs font-medium text-dark-500">Budget</span>
+              </button>
+              <button class="calc-style-btn p-3 rounded-xl border-2 border-teal-400 bg-teal-50 text-center transition-colors focus:outline-none" data-style="mid">
+                <span class="text-2xl block mb-1">🧳</span>
+                <span class="text-xs font-medium text-teal-600">Mid-Range</span>
+              </button>
+              <button class="calc-style-btn p-3 rounded-xl border-2 border-gray-200 text-center hover:border-teal-400 transition-colors focus:outline-none" data-style="luxury">
+                <span class="text-2xl block mb-1">✨</span>
+                <span class="text-xs font-medium text-dark-500">Luxury</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Calculate Button -->
+          <button id="calc-submit" class="btn-primary w-full">
+            Calculate My Budget
+            <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+          </button>
+
+          <!-- Results (hidden by default) -->
+          <div id="calc-results" class="hidden">
+            <div class="bg-gradient-to-br from-teal-50 to-primary-50 rounded-2xl p-6 border border-teal-100">
+              <h4 class="font-display font-bold text-dark-500 mb-4 flex items-center gap-2">
+                <span class="text-xl">📊</span>
+                Estimated Budget Breakdown
+              </h4>
+              <div class="space-y-3 mb-4">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 flex items-center gap-2"><span>✈️</span> Transport</span>
+                  <span id="result-transport" class="font-semibold text-dark-500">—</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 flex items-center gap-2"><span>🏨</span> Accommodation</span>
+                  <span id="result-hotel" class="font-semibold text-dark-500">—</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 flex items-center gap-2"><span>🍽️</span> Food</span>
+                  <span id="result-food" class="font-semibold text-dark-500">—</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 flex items-center gap-2"><span>🎯</span> Activities</span>
+                  <span id="result-activities" class="font-semibold text-dark-500">—</span>
+                </div>
+                <hr class="border-teal-200" />
+                <div class="flex justify-between items-center">
+                  <span class="font-bold text-dark-500">Total Estimate</span>
+                  <span id="result-total" class="text-xl font-display font-bold text-teal-600">—</span>
+                </div>
+                <div class="flex justify-between items-center text-sm">
+                  <span class="text-gray-500">Per Person</span>
+                  <span id="result-per-person" class="font-semibold text-primary-600">—</span>
+                </div>
+              </div>
+
+              <!-- Soft CTA -->
+              <div class="bg-white rounded-xl p-4 border border-teal-100 text-center">
+                <p class="text-sm text-gray-600 mb-3">💡 Want a detailed day-by-day plan with real bookings?</p>
+                <a href="#hero-input" class="btn-primary !py-3 !text-sm">
+                  Build My Full Itinerary — Free
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Budget data (per person per day in INR)
+  const budgetData: Record<string, Record<string, {transport: number; hotel: number; food: number; activities: number}>> = {
+    manali:     { budget: {transport: 800, hotel: 600, food: 400, activities: 300}, mid: {transport: 1500, hotel: 1500, food: 800, activities: 600}, luxury: {transport: 3000, hotel: 4000, food: 1500, activities: 1200} },
+    goa:        { budget: {transport: 600, hotel: 500, food: 400, activities: 200}, mid: {transport: 1200, hotel: 1800, food: 800, activities: 500}, luxury: {transport: 2500, hotel: 5000, food: 1500, activities: 1000} },
+    rajasthan:  { budget: {transport: 500, hotel: 700, food: 350, activities: 300}, mid: {transport: 1000, hotel: 2000, food: 700, activities: 700}, luxury: {transport: 2500, hotel: 6000, food: 1500, activities: 1500} },
+    ladakh:     { budget: {transport: 1500, hotel: 800, food: 500, activities: 400}, mid: {transport: 3000, hotel: 2000, food: 900, activities: 800}, luxury: {transport: 5000, hotel: 5000, food: 1500, activities: 1500} },
+    kerala:     { budget: {transport: 500, hotel: 600, food: 400, activities: 300}, mid: {transport: 1000, hotel: 2000, food: 800, activities: 700}, luxury: {transport: 2000, hotel: 5000, food: 1500, activities: 1200} },
+    andaman:    { budget: {transport: 1200, hotel: 800, food: 500, activities: 500}, mid: {transport: 2500, hotel: 2500, food: 900, activities: 1000}, luxury: {transport: 4000, hotel: 5000, food: 1500, activities: 2000} },
+    nepal:      { budget: {transport: 1000, hotel: 500, food: 300, activities: 400}, mid: {transport: 2000, hotel: 1500, food: 600, activities: 800}, luxury: {transport: 4000, hotel: 4000, food: 1200, activities: 1500} },
+    bali:       { budget: {transport: 1500, hotel: 700, food: 400, activities: 500}, mid: {transport: 3000, hotel: 2000, food: 800, activities: 1000}, luxury: {transport: 5000, hotel: 5000, food: 1500, activities: 2000} },
+    thailand:   { budget: {transport: 1200, hotel: 600, food: 400, activities: 400}, mid: {transport: 2500, hotel: 1800, food: 700, activities: 800}, luxury: {transport: 4000, hotel: 4500, food: 1200, activities: 1500} },
+  };
+
+  let selectedStyle = 'mid';
+
+  // Style buttons
+  document.querySelectorAll('.calc-style-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.calc-style-btn').forEach(b => {
+        b.classList.remove('border-teal-400', 'bg-teal-50');
+        b.classList.add('border-gray-200');
+      });
+      btn.classList.remove('border-gray-200');
+      btn.classList.add('border-teal-400', 'bg-teal-50');
+      selectedStyle = (btn as HTMLElement).dataset.style || 'mid';
+    });
+  });
+
+  // Calculate
+  document.getElementById('calc-submit')?.addEventListener('click', () => {
+    const dest = (document.getElementById('calc-destination') as HTMLSelectElement)?.value;
+    const days = parseInt((document.getElementById('calc-days') as HTMLInputElement)?.value || '5');
+    const travelers = parseInt((document.getElementById('calc-travelers') as HTMLInputElement)?.value || '2');
+
+    if (!dest || !budgetData[dest]) {
+      alert('Please select a destination');
+      return;
+    }
+
+    const rates = budgetData[dest][selectedStyle];
+    const transport = rates.transport * days * travelers;
+    const hotel = rates.hotel * days * travelers;
+    const food = rates.food * days * travelers;
+    const activities = rates.activities * days * travelers;
+    const total = transport + hotel + food + activities;
+    const perPerson = Math.round(total / travelers);
+
+    const fmt = (n: number) => '₹' + n.toLocaleString('en-IN');
+    
+    document.getElementById('result-transport')!.textContent = fmt(transport);
+    document.getElementById('result-hotel')!.textContent = fmt(hotel);
+    document.getElementById('result-food')!.textContent = fmt(food);
+    document.getElementById('result-activities')!.textContent = fmt(activities);
+    document.getElementById('result-total')!.textContent = fmt(total);
+    document.getElementById('result-per-person')!.textContent = fmt(perPerson);
+
+    document.getElementById('calc-results')?.classList.remove('hidden');
+    document.getElementById('calc-results')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>

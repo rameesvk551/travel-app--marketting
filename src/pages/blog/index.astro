@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout title="Blog" description="Travel insights, tips, and guides from the Wayon team. AI planning, group trips, trekking, deals, and digital nomad life.">
+  <Header />
+  <main>
+    <section class="pt-32 pb-16 bg-gradient-to-b from-primary-500 to-teal-600 text-white">
+      <div class="container-narrow text-center">
+        <h1 class="text-4xl sm:text-5xl font-display font-extrabold mb-6">
+          Travel <span class="text-accent-300">Insights</span>
+        </h1>
+        <p class="text-xl text-white/80 max-w-2xl mx-auto">Tips, guides, and inspiration to help you travel smarter.</p>
+      </div>
+    </section>
+
+    <section class="section-padding bg-white">
+      <div class="container-narrow">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map(post => (
+            <a href={`/blog/${post.slug}`} class="card-hover overflow-hidden group">
+              <div class="h-48 bg-gradient-to-br from-primary-100 to-teal-100 flex items-center justify-center">
+                <span class="text-5xl group-hover:scale-110 transition-transform">📝</span>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center gap-2 mb-3">
+                  {post.data.tags.slice(0, 2).map(tag => (
+                    <span class="text-xs bg-teal-50 text-teal-600 px-2 py-1 rounded-full">{tag}</span>
+                  ))}
+                </div>
+                <h2 class="font-display font-bold text-dark-500 text-lg mb-2 group-hover:text-teal-600 transition-colors line-clamp-2">
+                  {post.data.title}
+                </h2>
+                <p class="text-sm text-gray-500 line-clamp-2 mb-3">{post.data.description}</p>
+                <div class="flex items-center justify-between text-xs text-gray-400">
+                  <span>{post.data.author}</span>
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                  </time>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

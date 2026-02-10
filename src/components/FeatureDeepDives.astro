@@ -1,0 +1,150 @@
+---
+const features = [
+  {
+    id: 'ai',
+    icon: '🧠',
+    title: 'AI Intelligence',
+    subtitle: 'Personalized to your pace',
+    description: 'Our AI learns your travel style — budget backpacker or luxury seeker, adventure or relaxation — and builds plans that actually match who you are.',
+    bullets: [
+      'Personalized based on pace, budget & interests',
+      'Real-time price monitoring & alerts',
+      'Smart suggestions based on weather & seasons',
+      'Learns from your feedback over time',
+    ],
+    gradient: 'from-primary-500 to-teal-500',
+    bgLight: 'bg-primary-50',
+    textColor: 'text-primary-600',
+  },
+  {
+    id: 'group',
+    icon: '👥',
+    title: 'Group Collaboration',
+    subtitle: 'Plan together, effortlessly',
+    description: 'No more WhatsApp chaos. Invite friends, vote on activities, split costs, and chat — all inside your shared itinerary.',
+    bullets: [
+      'Real-time collaborative editing',
+      'Democratic voting on activities',
+      'Built-in chat & comments',
+      'Automatic cost splitting',
+    ],
+    gradient: 'from-teal-500 to-nature-500',
+    bgLight: 'bg-teal-50',
+    textColor: 'text-teal-600',
+  },
+  {
+    id: 'adventure',
+    icon: '🏔️',
+    title: 'Adventure Ready',
+    subtitle: 'Beyond hotels & flights',
+    description: 'From Himalayan treks to scuba diving in Andamans — discover and book curated adventures with verified local operators.',
+    bullets: [
+      'Curated treks, tours & local experiences',
+      'Verified adventure operators',
+      'Difficulty ratings & gear checklists',
+      'Real traveler reviews',
+    ],
+    gradient: 'from-nature-500 to-nature-600',
+    bgLight: 'bg-nature-50',
+    textColor: 'text-nature-600',
+  },
+  {
+    id: 'price',
+    icon: '💰',
+    title: 'Best Price Guarantee',
+    subtitle: 'Save money automatically',
+    description: 'We aggregate deals across all major platforms and show you the cheapest option. If you find a lower price, we match it.',
+    bullets: [
+      'Aggregated from 20+ booking platforms',
+      'Price drop alerts & auto-rebooking',
+      'Hidden deal finder',
+      'Transparent fee comparison',
+    ],
+    gradient: 'from-accent-500 to-accent-600',
+    bgLight: 'bg-accent-50',
+    textColor: 'text-accent-600',
+  },
+  {
+    id: 'whatsapp',
+    icon: '💬',
+    title: 'WhatsApp Planning',
+    subtitle: 'No app needed — just chat',
+    description: 'Plan your entire trip from WhatsApp. Send a message, get a complete itinerary with hotels, transport, and activities — no downloads required.',
+    bullets: [
+      'Natural language trip planning',
+      'Interactive buttons & quick replies',
+      'Group planning in WhatsApp',
+      'PDF itinerary export',
+    ],
+    gradient: 'from-[#128C7E] to-[#25D366]',
+    bgLight: 'bg-green-50',
+    textColor: 'text-green-600',
+    link: '/whatsapp-planner',
+  },
+];
+---
+
+<section class="section-padding bg-white" id="features">
+  <div class="container-narrow">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 bg-primary-50 text-primary-600 rounded-full px-4 py-2 mb-6 text-sm font-medium">
+        <span>🚀</span>
+        The Five Pillars
+      </div>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-dark-500 mb-6 text-balance">
+        Everything You Need.<br/>
+        <span class="gradient-text">Nothing You Don't.</span>
+      </h2>
+      <p class="text-lg text-gray-500 leading-relaxed">
+        Built for Indian travelers who want simplicity without sacrificing possibilities.
+      </p>
+    </div>
+
+    <!-- Feature Cards -->
+    <div class="grid md:grid-cols-2 gap-8">
+      {features.map((feature, i) => (
+        <div class="card-hover p-8 group" id={`feature-${feature.id}`}>
+          <!-- Icon & Title -->
+          <div class="flex items-start gap-4 mb-6">
+            <div class={`w-14 h-14 rounded-xl ${feature.bgLight} flex items-center justify-center text-3xl group-hover:scale-110 transition-transform shadow-sm`}>
+              {feature.icon}
+            </div>
+            <div>
+              <h3 class="text-xl font-display font-bold text-dark-500">{feature.title}</h3>
+              <p class={`text-sm ${feature.textColor} font-medium`}>{feature.subtitle}</p>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <p class="text-gray-500 leading-relaxed mb-6">{feature.description}</p>
+
+          <!-- Bullets -->
+          <ul class="space-y-3">
+            {feature.bullets.map(bullet => (
+              <li class="flex items-start gap-3">
+                <svg class={`w-5 h-5 ${feature.textColor} flex-shrink-0 mt-0.5`} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-sm text-gray-600">{bullet}</span>
+              </li>
+            ))}
+          </ul>
+
+          <!-- Bottom Gradient Line -->
+          <div class={`mt-6 h-1 w-full rounded-full bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="text-center mt-12">
+      <a href="/features" class="btn-secondary">
+        Explore All Features
+        <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<BaseLayout title="Trek Readiness Quiz" description="Find out how ready you are for your next trek. Take our quick quiz and get personalized recommendations.">
+  <Header />
+  <main>
+    <section class="pt-32 pb-16 bg-gradient-to-b from-nature-600 to-teal-600 text-white">
+      <div class="container-narrow text-center">
+        <div class="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 mb-6 text-sm">
+          <span>⛰️</span> Free Quiz
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-display font-extrabold mb-6">
+          Trek Readiness <span class="text-accent-300">Quiz</span>
+        </h1>
+        <p class="text-xl text-white/80">Are you ready for the mountains? Find out in 2 minutes.</p>
+      </div>
+    </section>
+
+    <section class="section-padding bg-white">
+      <div class="container-narrow max-w-xl">
+        <div class="card p-8" id="quiz-container">
+          <!-- Quiz will be rendered by JS -->
+          <div id="quiz-start" class="text-center">
+            <div class="text-6xl mb-4">🏔️</div>
+            <h2 class="text-2xl font-display font-bold text-dark-500 mb-4">Ready to Test Yourself?</h2>
+            <p class="text-gray-500 mb-6">Answer 6 quick questions about your fitness, experience, and gear. We'll tell you which treks are right for you.</p>
+            <button id="quiz-begin" class="btn-primary">Start Quiz</button>
+          </div>
+
+          <div id="quiz-questions" class="hidden"></div>
+          <div id="quiz-result" class="hidden"></div>
+        </div>
+
+        <div class="mt-8 bg-nature-50 rounded-2xl p-6 text-center border border-nature-100">
+          <p class="text-sm text-gray-600 mb-3">💡 Get a complete trek plan with gear list, acclimatization schedule, and bookings.</p>
+          <a href="/#hero-input" class="btn-primary !py-3 !text-sm !bg-nature-500 hover:!bg-nature-600">Plan My Trek — Free</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script>
+  interface QuizQuestion {
+    question: string;
+    options: { label: string; score: number }[];
+  }
+
+  const questions: QuizQuestion[] = [
+    {
+      question: 'How often do you exercise?',
+      options: [
+        { label: 'Rarely / Never', score: 1 },
+        { label: '1-2 times a week', score: 2 },
+        { label: '3-4 times a week', score: 3 },
+        { label: 'Daily', score: 4 },
+      ],
+    },
+    {
+      question: 'What is your trekking experience?',
+      options: [
+        { label: 'Never trekked before', score: 1 },
+        { label: '1-2 easy treks', score: 2 },
+        { label: 'Several moderate treks', score: 3 },
+        { label: 'Experienced (difficult treks)', score: 4 },
+      ],
+    },
+    {
+      question: 'How do you handle high altitude (above 3,000m)?',
+      options: [
+        { label: 'Never been at altitude', score: 1 },
+        { label: 'Felt some mild discomfort', score: 2 },
+        { label: 'Adapted well previously', score: 3 },
+        { label: 'Very comfortable at altitude', score: 4 },
+      ],
+    },
+    {
+      question: 'Do you have proper trekking gear?',
+      options: [
+        { label: 'No gear at all', score: 1 },
+        { label: 'Basic shoes & backpack', score: 2 },
+        { label: 'Good boots, layers & gear', score: 3 },
+        { label: 'Full professional setup', score: 4 },
+      ],
+    },
+    {
+      question: 'How long can you walk with a loaded backpack?',
+      options: [
+        { label: 'Less than 2 hours', score: 1 },
+        { label: '2-4 hours', score: 2 },
+        { label: '4-6 hours', score: 3 },
+        { label: '6+ hours comfortably', score: 4 },
+      ],
+    },
+    {
+      question: 'What motivates you to trek?',
+      options: [
+        { label: 'Just want to try it out', score: 1 },
+        { label: 'Love nature and scenery', score: 2 },
+        { label: 'Physical challenge', score: 3 },
+        { label: 'Summit-driven adventure', score: 4 },
+      ],
+    },
+  ];
+
+  let currentQ = 0;
+  let totalScore = 0;
+
+  function renderQuestion(index: number) {
+    const q = questions[index];
+    const container = document.getElementById('quiz-questions')!;
+    container.innerHTML = `
+      <div class="mb-4">
+        <div class="flex justify-between items-center mb-6">
+          <span class="text-sm text-gray-400">Question ${index + 1} of ${questions.length}</span>
+          <div class="w-32 h-2 bg-gray-100 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-teal-500 to-nature-500 rounded-full transition-all duration-300" style="width: ${((index + 1) / questions.length) * 100}%"></div>
+          </div>
+        </div>
+        <h3 class="text-xl font-display font-bold text-dark-500 mb-6">${q.question}</h3>
+        <div class="space-y-3">
+          ${q.options.map(opt => `
+            <button class="quiz-option w-full text-left p-4 rounded-xl border-2 border-gray-200 hover:border-teal-400 hover:bg-teal-50 transition-all text-sm font-medium text-dark-500" data-score="${opt.score}">
+              ${opt.label}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    container.querySelectorAll('.quiz-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        totalScore += parseInt((btn as HTMLElement).dataset.score || '0');
+        currentQ++;
+        if (currentQ < questions.length) {
+          renderQuestion(currentQ);
+        } else {
+          showResult();
+        }
+      });
+    });
+  }
+
+  function showResult() {
+    const container = document.getElementById('quiz-questions')!;
+    container.classList.add('hidden');
+    const resultDiv = document.getElementById('quiz-result')!;
+
+    let level: string, emoji: string, description: string, treks: string;
+    const maxScore = questions.length * 4;
+    const percentage = Math.round((totalScore / maxScore) * 100);
+
+    if (totalScore <= 10) {
+      level = 'Beginner Explorer';
+      emoji = '🌱';
+      description = 'You\'re just starting your trekking journey! Start with easy trails and build up gradually.';
+      treks = 'Triund, Kheerganga, Nag Tibba, Prashar Lake';
+    } else if (totalScore <= 16) {
+      level = 'Trail Ready';
+      emoji = '🥾';
+      description = 'You have a good foundation! You\'re ready for moderate treks with proper preparation.';
+      treks = 'Kedarkantha, Brahmatal, Hampta Pass, Valley of Flowers';
+    } else if (totalScore <= 20) {
+      level = 'Mountain Veteran';
+      emoji = '⛰️';
+      description = 'Impressive! You\'re ready for challenging treks. Consider high-altitude and multi-day expeditions.';
+      treks = 'Roopkund, Goechala, Chadar Trek, Rupin Pass';
+    } else {
+      level = 'Summit Seeker';
+      emoji = '🏔️';
+      description = 'You\'re a true mountaineer! The highest peaks are calling you.';
+      treks = 'Stok Kangri, Pin Parvati Pass, Kamet, Nun-Kun';
+    }
+
+    resultDiv.innerHTML = `
+      <div class="text-center">
+        <div class="text-6xl mb-4">${emoji}</div>
+        <h3 class="text-2xl font-display font-bold text-dark-500 mb-2">${level}</h3>
+        <div class="inline-flex items-center gap-2 bg-teal-50 text-teal-600 rounded-full px-4 py-2 mb-4 text-sm font-medium">
+          Score: ${totalScore}/${maxScore} (${percentage}%)
+        </div>
+        <p class="text-gray-500 mb-6">${description}</p>
+        <div class="bg-gradient-to-br from-nature-50 to-teal-50 rounded-xl p-4 border border-nature-100 mb-6">
+          <h4 class="font-semibold text-dark-500 text-sm mb-2">Recommended Treks</h4>
+          <p class="text-sm text-gray-600">${treks}</p>
+        </div>
+        <a href="/#hero-input" class="btn-primary">Plan My Trek with AI</a>
+        <button id="quiz-retry" class="btn-ghost block mx-auto mt-3 text-sm">Take Quiz Again</button>
+      </div>
+    `;
+    resultDiv.classList.remove('hidden');
+
+    document.getElementById('quiz-retry')?.addEventListener('click', () => {
+      currentQ = 0;
+      totalScore = 0;
+      resultDiv.classList.add('hidden');
+      document.getElementById('quiz-start')?.classList.remove('hidden');
+    });
+  }
+
+  document.getElementById('quiz-begin')?.addEventListener('click', () => {
+    document.getElementById('quiz-start')?.classList.add('hidden');
+    const qContainer = document.getElementById('quiz-questions')!;
+    qContainer.classList.remove('hidden');
+    renderQuestion(0);
+  });
+</script>
