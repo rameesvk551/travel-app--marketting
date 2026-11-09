@@ -1,26 +1,108 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import TrustBar from '../components/TrustBar.astro';
-import ProblemAgitation from '../components/ProblemAgitation.astro';
-import MagicDemo from '../components/MagicDemo.astro';
-import FeatureDeepDives from '../components/FeatureDeepDives.astro';
-import UtilityTool from '../components/UtilityTool.astro';
-import FinalCTA from '../components/FinalCTA.astro';
 import Footer from '../components/Footer.astro';
+
+const modules = [
+  { number: '01', icon: '◎', title: 'Travel CRM', tag: 'LEADS → CLIENTS', copy: 'Keep every enquiry, conversation, preference and follow-up in one clear customer timeline.', color: 'coral' },
+  { number: '02', icon: '▣', title: 'Booking management', tag: 'QUOTE → CONFIRMED', copy: 'Prepare proposals, track reservations, collect payment milestones and keep documents close.', color: 'blue' },
+  { number: '03', icon: '⌁', title: 'Trip operations', tag: 'PLAN → ON THE GROUND', copy: 'Turn confirmed bookings into day-by-day itineraries, task lists and traveler-ready trip plans.', color: 'green' },
+  { number: '04', icon: '↗', title: 'Website builder', tag: 'YOUR BRAND, ONLINE', copy: 'Publish a polished travel website and showcase your packages without waiting on a developer.', color: 'purple' },
+  { number: '05', icon: '◇', title: 'Supplier & inventory', tag: 'PARTNERS → PRODUCTS', copy: 'Organize hotels, transport, guides and packages with the details your team needs to sell.', color: 'yellow' },
+  { number: '06', icon: '◷', title: 'Payments & reporting', tag: 'MONEY → CLARITY', copy: 'See what is due, what has been collected and how each trip is shaping up financially.', color: 'mint' },
+];
+
+const faqs = [
+  ['Who is Wayon for?', 'Wayon is designed for travel agencies, tour operators and teams that sell and operate trips.'],
+  ['Can I use my own brand on my website?', 'The website builder section is designed around your agency identity, so your packages can be presented under your own brand.'],
+  ['Does this page connect to a live booking system?', 'This is a static product website. The product screens are illustrative, and the demo request opens an email draft rather than sending data to a backend.'],
+  ['Can I manage both sales and trip delivery?', 'The platform story brings enquiries, proposals, bookings, itineraries, supplier details and trip operations together in one workflow.'],
+];
 ---
 
-<BaseLayout title="Home">
+<BaseLayout title="Home" description="Run your travel business in one place with Wayon: travel CRM, booking management, trip operations, supplier tools and a branded website builder." image="/favicon.svg">
   <Header />
   <main>
-    <Hero />
-    <TrustBar />
-    <ProblemAgitation />
-    <MagicDemo />
-    <FeatureDeepDives />
-    <UtilityTool />
-    <FinalCTA />
+    <section class="erp-hero" id="top">
+      <div class="hero-orb hero-orb-one"></div><div class="hero-orb hero-orb-two"></div>
+      <div class="erp-wrap hero-layout">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> THE TRAVEL BUSINESS WORKSPACE</div>
+          <h1>Less chasing.<br /><span>More journeys.</span></h1>
+          <p class="hero-lede">The operating system for travel teams. Bring leads, bookings, trip plans, suppliers and your agency website into one calm, connected workspace.</p>
+          <div class="hero-actions">
+            <a class="button button-dark" href="#demo">See how Wayon works <span aria-hidden="true">↗</span></a>
+            <a class="button button-light" href="#platform">Explore the platform <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-note"><span class="note-check">✓</span> Built for the way travel teams actually work</div>
+        </div>
+
+        <div class="product-stage" aria-label="Illustrative Wayon travel management dashboard">
+          <div class="stage-label"><span class="live-dot"></span> WAYON WORKSPACE <span class="stage-label-right">SAMPLE VIEW</span></div>
+          <div class="app-window">
+            <aside class="app-sidebar">
+              <div class="mini-brand"><span class="brand-mark">w</span><span>wayon</span></div>
+              <div class="workspace-name">STUDIO NORTH <span>⌄</span></div>
+              <div class="side-caption">WORKSPACE</div>
+              <div class="side-item active"><span>⌂</span> Overview</div>
+              <div class="side-item"><span>◎</span> Enquiries <b>8</b></div>
+              <div class="side-item"><span>▣</span> Bookings</div>
+              <div class="side-item"><span>⌁</span> Trips</div>
+              <div class="side-item"><span>◇</span> Suppliers</div>
+              <div class="side-item"><span>↗</span> Website</div>
+              <div class="sidebar-bottom"><span class="avatar">AR</span><span><strong>Alex Rivera</strong><small>Workspace owner</small></span><span>···</span></div>
+            </aside>
+            <div class="app-main">
+              <div class="app-topbar"><span>Monday, 14 October 2025</span><span class="topbar-actions">⌕ &nbsp; ◉ <i>AR</i></span></div>
+              <div class="app-heading"><div><div class="muted-label">MONDAY OVERVIEW</div><h2>Good morning, Alex <span>✳</span></h2><p>Here’s what’s moving across your travel desk.</p></div><button class="add-button">＋ New enquiry</button></div>
+              <div class="metric-row">
+                <div class="metric-card"><div class="metric-top">Open enquiries <span>↗</span></div><strong>24</strong><small><em>8 new</em> this week</small><div class="spark spark-blue"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+                <div class="metric-card"><div class="metric-top">Bookings in progress <span>↗</span></div><strong>12</strong><small>Across <em>6 trips</em></small><div class="spark spark-orange"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+                <div class="metric-card"><div class="metric-top">Upcoming departures <span>↗</span></div><strong>5</strong><small>Next 30 days</small><div class="spark spark-green"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+              </div>
+              <div class="app-panels">
+                <div class="pipeline-panel"><div class="panel-heading"><strong>Enquiry pipeline</strong><span>View all →</span></div><div class="pipeline-columns"><div><label>NEW <b>4</b></label><article class="lead-card"><div class="lead-avatar peach">JM</div><div><strong>Jordan Miles</strong><small>Japan · 2 travelers</small></div><span>···</span><p>Autumn discovery trip</p><footer><span>New enquiry</span><small>2h ago</small></footer></article><article class="lead-card"><div class="lead-avatar lilac">SK</div><div><strong>Samira Khan</strong><small>Morocco · 4 travelers</small></div><span>···</span><p>Family spring break</p><footer><span>Website form</span><small>Yesterday</small></footer></article></div><div><label>PROPOSAL SENT <b>3</b></label><article class="lead-card compact"><div class="lead-avatar mint">LC</div><div><strong>Leo Chen</strong><small>Italy · 2 travelers</small></div><span>···</span><p>Food & culture week</p><footer><span>Follow up</span><small>Today</small></footer></article></div></div></div>
+                <div class="departures-panel"><div class="panel-heading"><strong>Next departures</strong><span>Calendar →</span></div><div class="departure"><div class="date-tile"><b>18</b><small>OCT</small></div><div><strong>Kerala, unhurried</strong><small>6 travelers · 5 days</small></div><span class="status-pill ready">Ready</span></div><div class="departure"><div class="date-tile"><b>22</b><small>OCT</small></div><div><strong>Rajasthan by road</strong><small>4 travelers · 8 days</small></div><span class="status-pill prep">In prep</span></div><div class="departure"><div class="date-tile"><b>26</b><small>OCT</small></div><div><strong>Himalayan weekend</strong><small>8 travelers · 3 days</small></div><span class="status-pill prep">In prep</span></div><div class="task-note"><span>✳</span><div><strong>2 trip details need attention</strong><small>Review before the next departure</small></div></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="floating-chip chip-left"><span>↗</span><div><strong>New enquiry</strong><small>Japan · 2 travelers</small></div></div>
+          <div class="floating-chip chip-right"><span class="chip-check">✓</span><div><strong>Trip plan ready</strong><small>Shared with your team</small></div></div>
+        </div>
+      </div>
+      <div class="hero-bottom"><div class="erp-wrap hero-bottom-inner"><span>ONE CONNECTED WORKFLOW</span><div>Discover <b>→</b> Sell <b>→</b> Book <b>→</b> Deliver <b>→</b> Grow</div><a href="#platform">See what’s inside <span>↓</span></a></div></div>
+    </section>
+
+    <section class="intro-section erp-wrap" id="platform">
+      <div class="section-kicker">YOUR WHOLE DESK, IN SYNC</div>
+      <div class="intro-grid"><h2>Travel is personal.<br /><span>Your systems can be, too.</span></h2><p>When customer details live in one place and every booking connects to the trip it belongs to, your team can spend less time piecing things together—and more time looking after travelers.</p></div>
+      <div class="module-grid">
+        {modules.map((module) => <article class={`module-card module-${module.color}`}><div class="module-top"><span class="module-icon">{module.icon}</span><span class="module-number">{module.number}</span></div><div class="module-tag">{module.tag}</div><h3>{module.title}</h3><p>{module.copy}</p><a href="#workflow" aria-label={`Learn about ${module.title}`}>Explore module <span>↗</span></a></article>)}
+      </div>
+    </section>
+
+    <section class="workflow-section" id="workflow"><div class="erp-wrap workflow-grid"><div class="workflow-copy"><div class="section-kicker">ONE TRIP. ONE THREAD.</div><h2>From first hello<br />to <span>welcome home.</span></h2><p>Keep the context as a traveler moves from curious to confirmed to on the road. Sales and operations work from the same trip record.</p><a class="text-link" href="#demo">See the workflow <span>↗</span></a><div class="workflow-steps"><div class="step active"><span>01</span><div><strong>Capture the enquiry</strong><small>Know who’s traveling, where, and what matters to them.</small></div></div><div class="step"><span>02</span><div><strong>Shape the proposal</strong><small>Build a trip that fits, then keep every change in context.</small></div></div><div class="step"><span>03</span><div><strong>Confirm the booking</strong><small>Track travelers, payments, suppliers and documents together.</small></div></div><div class="step"><span>04</span><div><strong>Deliver the journey</strong><small>Give your team a clear plan before travelers set off.</small></div></div></div></div>
+        <div class="journey-board"><div class="journey-header"><div><span class="trip-label">TRIP WORKSPACE</span><h3>Japan, thoughtfully</h3></div><button>•••</button></div><div class="journey-client"><span class="client-avatar">JM</span><div><strong>Jordan Miles</strong><small>2 travelers · 12–20 Nov</small></div><span class="booking-status">● Confirmed</span></div><div class="journey-tabs"><span class="selected">Overview</span><span>Itinerary</span><span>Travelers</span><span>Payments</span></div><div class="journey-progress"><div><span>Trip readiness</span><strong>Good shape</strong></div><div class="progress-track"><i></i></div><small>Key details organized for the team</small></div><div class="journey-timeline"><div class="timeline-line"></div><article><span class="timeline-dot violet"></span><div class="timeline-date">DAY 1 · TOKYO</div><strong>Arrive & settle in</strong><p>Private transfer · Check-in at K5 Tokyo</p><span class="timeline-tag">Stay confirmed</span></article><article><span class="timeline-dot orange"></span><div class="timeline-date">DAY 3 · HAKONE</div><strong>Onsen & mountain views</strong><p>Rail transfer · Ryokan check-in</p><span class="timeline-tag">Supplier details added</span></article><article><span class="timeline-dot green"></span><div class="timeline-date">DAY 6 · KYOTO</div><strong>Old lanes, new stories</strong><p>Local guide · Evening food walk</p><span class="timeline-tag">Traveler note saved</span></article></div><div class="journey-footer"><span>✳ &nbsp; 3 team members on this trip</span><a href="#demo">Open trip workspace →</a></div></div>
+      </div></section>
+
+    <section class="website-section" id="website-builder"><div class="erp-wrap website-grid"><div class="website-copy"><div class="section-kicker">YOUR BRAND, YOUR FRONT DOOR</div><h2>A website that’s<br /><span>part of the journey.</span></h2><p>Showcase your trips with a polished, branded website. Keep your offer and your operations close, so a visitor’s interest has a clear next step.</p><ul><li><span>✓</span> Put your agency identity front and center</li><li><span>✓</span> Present packages with clear details and imagery</li><li><span>✓</span> Give travelers a simple path to enquire</li><li><span>✓</span> Keep your team’s package information organized</li></ul><a class="button button-dark" href="#demo">Explore the website builder <span>↗</span></a></div><div class="site-preview"><div class="preview-top"><span class="browser-dots"><i></i><i></i><i></i></span><div class="address-bar">✦ &nbsp; journeys.studionorth.example</div><span>↗</span></div><div class="preview-page"><div class="preview-nav"><span class="preview-logo"><i>✳</i> northbound</span><span>Journeys &nbsp;&nbsp; About &nbsp;&nbsp; Journal</span><button>Plan with us ↗</button></div><div class="preview-hero"><div class="preview-image"><div class="sun"></div><div class="mountain mountain-back"></div><div class="mountain mountain-front"></div><div class="landscape-caption"><small>THE SLOW WAY THROUGH</small><strong>Find your<br />own north.</strong><span>Thoughtful journeys, made personal.</span></div></div><div class="preview-story"><div class="preview-eyebrow">TRAVEL WITH INTENTION</div><h3>Places that<br />stay with you.</h3><p>Small-group journeys shaped around local voices, beautiful stays and the joy of taking your time.</p><button>Explore our journeys <span>→</span></button></div></div><div class="preview-bottom"><span>CURATED FOR THE CURIOUS</span><span>Japan · India · Morocco · Italy</span><span>01 — 04</span></div></div><div class="builder-float"><span>✳</span><div><strong>Made for your brand</strong><small>Packages · Enquiries · Pages</small></div></div></div></div></section>
+
+    <section class="closing-section"><div class="erp-wrap closing-inner"><div><div class="section-kicker">GOOD TRIPS TAKE A TEAM</div><h2>Give your team room<br />to <span>make it memorable.</span></h2><p>See how one connected workspace could fit the way your agency sells and delivers travel.</p></div><a href="#demo" class="button button-lime">Let’s talk about your workflow <span>↗</span></a></div></section>
+
+    <section class="faq-section erp-wrap" id="faq"><div class="faq-intro"><div class="section-kicker">A FEW GOOD QUESTIONS</div><h2>Before we<br /><span>take off.</span></h2><p>Want to see how the pieces fit together? Start with the basics, then tell us how your team works.</p></div><div class="faq-list">{faqs.map(([question, answer], i) => <details class="faq-row" open={i === 0}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</div></section>
+
+    <section class="demo-section" id="demo"><div class="erp-wrap demo-grid"><div><div class="section-kicker">LET’S MAP YOUR WORKFLOW</div><h2>Every great trip<br />starts with <span>a conversation.</span></h2><p>Tell us a little about your travel business. Your email app will open with a draft addressed to Wayon so you can send a demo request.</p><div class="demo-promise"><span>✳</span><div><strong>Made for travel teams</strong><small>Agencies · Tour operators · DMCs</small></div></div></div><form class="demo-form" id="demo-form"><label>Your name<input name="name" autocomplete="name" placeholder="e.g. Alex Rivera" required /></label><label>Work email<input type="email" name="email" autocomplete="email" placeholder="you@youragency.com" required /></label><label>What would you like to manage?<select name="interest"><option>CRM and enquiries</option><option>Bookings and payments</option><option>Trip operations</option><option>Branded website builder</option><option>Everything in one place</option></select></label><button type="submit" class="button button-dark">Request a conversation <span>↗</span></button><small class="form-note">This static demo opens a prefilled email draft. No form data is stored on this page.</small></form></div></section>
   </main>
   <Footer />
 </BaseLayout>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('#demo-form');
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const subject = encodeURIComponent(`Wayon demo request — ${data.get('interest')}`);
+    const body = encodeURIComponent(`Hi Wayon,\n\nI'd like to learn more about the travel ERP.\n\nName: ${data.get('name')}\nWork email: ${data.get('email')}\nInterested in: ${data.get('interest')}\n`);
+    window.location.href = `mailto:hello@wayon.travel?subject=${subject}&body=${body}`;
+  });
+</script>

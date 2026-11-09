@@ -4,88 +4,26 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<BaseLayout title="Contact" description="Get in touch with the Wayon team. We'd love to hear from you — questions, feedback, or partnership inquiries.">
+<BaseLayout title="Contact Wayon" description="Talk with Wayon about travel CRM, booking management, trip operations and a branded travel website builder.">
   <Header />
-  <main>
-    <section class="pt-32 pb-16 bg-gradient-to-b from-primary-500 to-teal-600 text-white">
-      <div class="container-narrow text-center">
-        <h1 class="text-4xl sm:text-5xl font-display font-extrabold mb-6">
-          Let's <span class="text-accent-300">Talk</span>
-        </h1>
-        <p class="text-xl text-white/80">Questions, feedback, partnerships — we're all ears.</p>
-      </div>
-    </section>
-
-    <section class="section-padding bg-white">
-      <div class="container-narrow max-w-4xl">
-        <div class="grid md:grid-cols-2 gap-12">
-          <!-- Form -->
-          <div>
-            <h2 class="text-2xl font-display font-bold text-dark-500 mb-6">Send a Message</h2>
-            <form class="space-y-4">
-              <div>
-                <label class="block text-sm font-semibold text-dark-500 mb-1">Name</label>
-                <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-300 focus:border-teal-500" placeholder="Your name" />
-              </div>
-              <div>
-                <label class="block text-sm font-semibold text-dark-500 mb-1">Email</label>
-                <input type="email" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-300 focus:border-teal-500" placeholder="you@example.com" />
-              </div>
-              <div>
-                <label class="block text-sm font-semibold text-dark-500 mb-1">Subject</label>
-                <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-300 focus:border-teal-500 bg-white">
-                  <option>General Inquiry</option>
-                  <option>Partnership</option>
-                  <option>Bug Report</option>
-                  <option>Feature Request</option>
-                  <option>Press</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-semibold text-dark-500 mb-1">Message</label>
-                <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-300 focus:border-teal-500 resize-none" placeholder="Tell us how we can help..."></textarea>
-              </div>
-              <button type="submit" class="btn-primary w-full">Send Message</button>
-            </form>
-          </div>
-
-          <!-- Info -->
-          <div>
-            <h2 class="text-2xl font-display font-bold text-dark-500 mb-6">Get in Touch</h2>
-            <div class="space-y-6">
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-xl bg-teal-50 flex items-center justify-center text-2xl flex-shrink-0">📧</div>
-                <div>
-                  <h3 class="font-semibold text-dark-500">Email</h3>
-                  <p class="text-gray-500">hello@wayon.travel</p>
-                </div>
-              </div>
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-xl bg-teal-50 flex items-center justify-center text-2xl flex-shrink-0">💬</div>
-                <div>
-                  <h3 class="font-semibold text-dark-500">Live Chat</h3>
-                  <p class="text-gray-500">Available 9am — 9pm IST</p>
-                </div>
-              </div>
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-xl bg-teal-50 flex items-center justify-center text-2xl flex-shrink-0">📍</div>
-                <div>
-                  <h3 class="font-semibold text-dark-500">Office</h3>
-                  <p class="text-gray-500">Bangalore, India</p>
-                </div>
-              </div>
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-xl bg-teal-50 flex items-center justify-center text-2xl flex-shrink-0">🐦</div>
-                <div>
-                  <h3 class="font-semibold text-dark-500">Social</h3>
-                  <p class="text-gray-500">@wayon_travel on Twitter & Instagram</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+  <main class="contact-page">
+    <section class="contact-heading erp-wrap"><div class="section-kicker">A GOOD PLACE TO START</div><h1>Tell us how your<br /><span>travel desk works.</span></h1><p>Share what your team is looking to bring together. We’ll take it from there.</p></section>
+    <section class="contact-content erp-wrap"><form class="demo-form" id="contact-form"><label>Your name<input name="name" autocomplete="name" placeholder="e.g. Alex Rivera" required /></label><label>Work email<input name="email" type="email" autocomplete="email" placeholder="you@youragency.com" required /></label><label>What would you like to discuss?<select name="interest"><option>Travel CRM and enquiries</option><option>Bookings and payments</option><option>Trip operations</option><option>Website builder</option><option>Something else</option></select></label><label>A little context<textarea name="message" rows="4" placeholder="Tell us about your travel business and what you need."></textarea></label><button class="button button-dark" type="submit">Open an email draft <span>↗</span></button><small class="form-note">Your email app will open with a message addressed to hello@wayon.travel. This static page does not store your details.</small></form><aside class="contact-aside"><span class="contact-mark">✳</span><h2>One conversation.<br />A clearer way forward.</h2><p>We can walk through your enquiry flow, bookings, trip operations and agency website together.</p><a href="mailto:hello@wayon.travel">hello@wayon.travel ↗</a></aside></section>
   </main>
   <Footer />
 </BaseLayout>
+
+<script>
+  const contactForm = document.querySelector<HTMLFormElement>('#contact-form');
+  contactForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(contactForm);
+    const subject = encodeURIComponent(`Wayon enquiry — ${data.get('interest')}`);
+    const body = encodeURIComponent(`Hi Wayon,\n\nName: ${data.get('name')}\nWork email: ${data.get('email')}\nInterested in: ${data.get('interest')}\n\n${data.get('message')}`);
+    window.location.href = `mailto:hello@wayon.travel?subject=${subject}&body=${body}`;
+  });
+</script>
+
+<style>
+  .contact-page{background:#f7f8f3;min-height:65vh}.contact-heading{padding-top:88px;padding-bottom:35px}.contact-heading h1{font-size:clamp(44px,6vw,68px);line-height:1.04;letter-spacing:-4px;margin:16px 0}.contact-heading h1 span{font:italic 400 1em var(--serif);letter-spacing:-3px;color:#58734e}.contact-heading>p{font-size:14px;color:#75817c}.contact-content{display:grid;grid-template-columns:.85fr 1.15fr;gap:76px;padding-bottom:100px;align-items:center}.contact-content .demo-form{max-width:440px;width:100%}.contact-form textarea{resize:vertical}.demo-form textarea{display:block;width:100%;padding:11px 10px;margin-top:6px;border:1px solid #e3e9e3;border-radius:5px;font:10px var(--sans);color:#33423a;background:white;outline:none}.contact-aside{background:#20342c;color:white;border-radius:12px;padding:38px;min-height:260px}.contact-mark{display:grid;place-items:center;background:#d8f279;color:#344433;border-radius:10px;width:38px;height:38px}.contact-aside h2{font-size:30px;letter-spacing:-1.4px;line-height:1.15;margin:21px 0 12px}.contact-aside p{font-size:12px;line-height:1.7;color:#c0cbc4;max-width:360px}.contact-aside>a{display:inline-block;font-size:11px;color:#d8f279;margin-top:14px}@media(max-width:700px){.contact-heading{padding-top:60px}.contact-heading h1{font-size:49px;letter-spacing:-3px}.contact-content{grid-template-columns:1fr;gap:22px;padding-bottom:65px}.contact-content .demo-form{max-width:none}.contact-aside{padding:25px}.contact-aside h2{font-size:26px}}
+</style>
