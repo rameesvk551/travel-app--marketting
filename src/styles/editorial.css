@@ -1,0 +1,87 @@
+/* A quieter, more grounded visual system for the Wayon travel desk. */
+:root {
+  --paper: #f3f0e7;
+  --ink: #252c25;
+  --green: #3f5b3d;
+  --line: #dcd9cf;
+  --muted: #6e756c;
+}
+
+body { background: #fbfaf6; color: var(--ink); }
+.erp-hero { background: #f3f0e7; min-height: 0; padding-top: 65px; }
+.hero-orb { display: none; }
+.hero-layout { grid-template-columns: .83fr 1.17fr; gap: 40px; padding-bottom: 76px; }
+.hero-copy { padding: 3px 0 12px; }
+.eyebrow, .section-kicker { color: #65705e; letter-spacing: 1.2px; font-size: 9px; }
+.eyebrow-dot, .live-dot { background: #b45f40; box-shadow: none; }
+.hero-copy h1 { max-width: 520px; font-size: clamp(49px, 5.4vw, 70px); line-height: .99; letter-spacing: -4.5px; margin: 24px 0 18px; }
+.hero-copy h1 span { display: inline; color: #61704b; letter-spacing: -3.9px; }
+.hero-lede { color: #62675e; max-width: 420px; font-size: 15px; line-height: 1.72; }
+.button { border-radius: 3px; }
+.button-dark { background: #344936; }
+.button-light { border-color: #d5d2c8; background: transparent; }
+.hero-note { color: #73756b; }
+.note-check { color: #a85e43; }
+.product-stage { padding-top: 13px; }
+.stage-label { color: #6d7168; font-size: 8px; letter-spacing: 1.05px; padding-left: 0; }
+.stage-label-right { color: #8d8d81; }
+.app-window { border: 1px solid #d9d7cf; border-radius: 3px; box-shadow: 0 12px 30px rgba(45, 49, 38, .08); transform: none; }
+.app-sidebar { background: #f8f7f2; border-color: #e5e2d9; }
+.workspace-name { border-radius: 2px; background: #f0efe8; }
+.side-item { border-radius: 2px; }
+.side-item.active { background: #e8eadf; color: #3f593c; }
+.side-item b { border-radius: 2px; }
+.metric-card, .pipeline-panel, .departures-panel, .lead-card { border-radius: 2px; box-shadow: none; }
+.metric-card { border-color: #e5e2d9; }
+.metric-top { color: #74776e; }
+.app-heading h2 { color: #2c342d; }
+.add-button { border-radius: 2px; background: #40583d; }
+.lead-card { border-color: #e7e4db; }
+.lead-avatar, .status-pill, .task-note { border-radius: 2px; }
+.hero-bottom { border-color: #dcd9cf; }
+.hero-bottom-inner>span { color: #76786e; }
+.hero-bottom-inner>div { color: #4e594d; }
+.hero-bottom-inner b { color: #ac6549; }
+.intro-section { padding-top: 84px; padding-bottom: 92px; }
+.intro-grid { margin-top: 14px; margin-bottom: 34px; }
+.intro-grid h2, .workflow-copy h2, .website-copy h2, .closing-inner h2, .faq-intro h2, .demo-grid h2 { letter-spacing: -2.2px; }
+.intro-grid h2 span, .workflow-copy h2 span, .website-copy h2 span, .closing-inner h2 span, .faq-intro h2 span, .demo-grid h2 span { color: #68744e; }
+.module-grid { gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.module-card { position: relative; min-height: 190px; padding: 20px 21px; border: 0; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); border-radius: 0; background: #fbfaf6; transition: background .18s; }
+.module-card:hover { transform: none; box-shadow: none; background: #f1efe6; }
+.module-icon { width: auto; height: auto; border-radius: 0; background: none !important; color: #a45e42 !important; font-size: 19px; }
+.module-number { color: #8a887b; font: 11px Georgia, serif; }
+.module-tag { color: #8a887b; letter-spacing: .9px; }
+.module-card h3 { font-size: 16px; }
+.module-card p { color: #6e756c; }
+.module-card>a { color: #4b6543; }
+.workflow-section { background: #eeece3; }
+.journey-board { border-radius: 3px; border-color: #d9d7ce; box-shadow: 0 12px 28px rgba(45, 49, 38, .06); }
+.journey-client { border-radius: 2px; background: #f2f0e8; }
+.client-avatar { border-radius: 2px; background: #eee2d5; color: #9b6047; }
+.booking-status, .timeline-tag, .progress-track { border-radius: 2px; }
+.timeline-dot { box-shadow: none; }
+.website-section { background: #fbfaf6; }
+.closing-section { background: #354838; }
+.closing-inner h2 span { color: #d2d8a4; }
+.button-lime { border-radius: 3px; background: #dfd9b9; color: #344336; }
+.faq-row { border-color: #dedbd2; }
+.demo-section { background: #eeece3; }
+.demo-form { border-radius: 3px; box-shadow: none; border-color: #dcd9cf; }
+.demo-form input, .demo-form select { border-radius: 2px; background: #fbfaf6; }
+.demo-promise>span { border-radius: 2px; background: #e2dfd1; color: #a35e42; }
+
+@media (max-width: 1000px) {
+  .hero-layout { grid-template-columns: 1fr; gap: 23px; }
+  .hero-copy { max-width: 670px; }
+  .product-stage { width: min(100%, 720px); margin: 0 auto; }
+}
+@media (max-width: 700px) {
+  .erp-hero { padding-top: 45px; }
+  .hero-layout { padding-bottom: 66px; }
+  .hero-copy h1 { font-size: 51px; letter-spacing: -3.3px; }
+  .hero-copy h1 span { letter-spacing: -2.9px; }
+  .intro-section { padding-top: 68px; padding-bottom: 70px; }
+  .module-grid { grid-template-columns: repeat(2, 1fr); }
+  .module-card { min-height: 195px; padding: 14px; }
+}
