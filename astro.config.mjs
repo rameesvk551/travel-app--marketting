@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://wayon.travel',
+  site: 'https://wayon.in',
   integrations: [
     sitemap(),
   ],
