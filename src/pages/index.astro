@@ -4,14 +4,14 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 const modules = [
-  { number: '01', icon: '◎', title: 'Lead management & CRM', tag: 'SALES PIPELINE', copy: 'Capture enquiries from WhatsApp, Instagram, your website and calls. Assign owners, track stages, schedule follow-ups and keep traveller details with each customer.', color: 'coral' },
-  { number: '02', icon: '◉', title: 'WhatsApp campaigns', tag: 'BULK MARKETING', copy: 'Organize opted-in contacts and prepare targeted bulk campaign messages for offers, seasonal packages and follow-ups.', color: 'blue' },
-  { number: '03', icon: '▤', title: 'Quotes & itineraries', tag: 'SALES', copy: 'Build a route, add line items and send a clear quote using reusable templates and INR pricing.', color: 'green' },
-  { number: '04', icon: '▣', title: 'Bookings & packages', tag: 'RESERVATIONS', copy: 'See reservations by status alongside what has been collected and what is still due.', color: 'purple' },
-  { number: '05', icon: '₹', title: 'Accounts & finance', tag: 'ACCOUNTS', copy: 'Issue invoices, record receipts, follow customer balances, review vendor payables and track financial reports.', color: 'yellow' },
-  { number: '06', icon: '⌁', title: 'Trip operations & suppliers', tag: 'ON THE GROUND', copy: 'Keep itineraries, hotel confirmations, pickup details, supplier contacts and traveller documents with each trip.', color: 'mint' },
-  { number: '07', icon: '◷', title: 'HRM & attendance', tag: 'PEOPLE', copy: 'Keep staff profiles, daily attendance, leave and payroll information together for your travel team.', color: 'coral' },
-  { number: '08', icon: '↗', title: 'Website builder', tag: 'YOUR BRAND', copy: 'Show your packages under your own agency brand and give visitors a direct route to enquire.', color: 'blue' },
+  { number: '01', title: 'Lead management & CRM', tag: 'SALES PIPELINE', copy: 'Capture enquiries from WhatsApp, Instagram, your website and calls. Assign owners, track stages, schedule follow-ups and keep traveller details with each customer.', image: '/images/wayon-feature-leads.jpg', imageAlt: 'Wayon leads screen from the product brochure, shown on desktop and mobile', imageCaption: 'WAYON / LEADS · SAMPLE DATA', color: 'coral' },
+  { number: '02', title: 'WhatsApp campaigns', tag: 'BULK MARKETING', copy: 'Organize opted-in contacts and prepare targeted bulk campaign messages for offers, seasonal packages and follow-ups.', image: '/images/wayon-feature-followups.jpg', imageAlt: 'Wayon follow-up queue shown on desktop and mobile', imageCaption: 'WAYON / FOLLOW-UPS · SAMPLE DATA', color: 'blue' },
+  { number: '03', title: 'Quotes & itineraries', tag: 'SALES', copy: 'Build a route, add line items and send a clear quote using reusable templates and INR pricing.', image: '/images/wayon-feature-quotes.jpg', imageAlt: 'Wayon quotation builder for creating a trip quote', imageCaption: 'WAYON / QUOTATIONS · SAMPLE DATA', color: 'green' },
+  { number: '04', title: 'Bookings & packages', tag: 'RESERVATIONS', copy: 'See reservations by status alongside what has been collected and what is still due.', image: '/images/wayon-feature-bookings.jpg', imageAlt: 'Wayon booking list showing revenue, payments due and reservation status', imageCaption: 'WAYON / BOOKINGS · SAMPLE DATA', color: 'purple' },
+  { number: '05', title: 'Accounts & finance', tag: 'ACCOUNTS', copy: 'Issue invoices, record receipts, follow customer balances, review vendor payables and track financial reports.', image: '/images/wayon-feature-accounts.jpg', imageAlt: 'Wayon accounting overview with receipts, payables and ledger entries', imageCaption: 'WAYON / ACCOUNTING · SAMPLE DATA', color: 'yellow' },
+  { number: '06', title: 'Trip operations & suppliers', tag: 'ON THE GROUND', copy: 'Keep itineraries, hotel confirmations, pickup details, supplier contacts and traveller documents with each trip.', image: '/images/wayon-feature-trips.jpg', imageAlt: 'Wayon package operations screen with customer receivables, vendor payables and trip finance', imageCaption: 'WAYON / OPERATIONS · SAMPLE DATA', color: 'mint' },
+  { number: '07', title: 'HRM & attendance', tag: 'PEOPLE', copy: 'Keep staff profiles, daily attendance, leave and payroll information together for your travel team.', image: '/images/wayon-feature-hrm.jpg', imageAlt: 'Wayon HRM screen with attendance, leave and staff timesheets', imageCaption: 'WAYON / HRM · SAMPLE DATA', color: 'coral' },
+  { number: '08', title: 'Website builder', tag: 'YOUR BRAND', copy: 'Show your packages under your own agency brand and give visitors a direct route to enquire.', image: '/images/munnar-tea.jpg', imageAlt: 'Illustrative Kerala package page image for an agency website', imageCaption: 'BRANDED PACKAGE PAGE · EXAMPLE', websiteExample: true, color: 'blue' },
 ];
 
 const faqs = [
@@ -51,7 +51,7 @@ const faqs = [
       <div class="section-kicker">YOUR WHOLE DESK, IN SYNC</div>
   <div class="intro-grid"><h2>A trip has a lot of moving parts.<br /><span>Keep them together.</span></h2><p>Bring lead management, WhatsApp campaigns, bookings, accounts and HRM into the same travel workspace. Sales and operations can pick up the same traveller and trip details as work moves forward.</p></div>
       <div class="module-grid">
-        {modules.map((module) => <article class={`module-card module-${module.color}`}><div class="module-top"><span class="module-icon">{module.icon}</span><span class="module-number">{module.number}</span></div><div class="module-tag">{module.tag}</div><h3>{module.title}</h3><p>{module.copy}</p><a href="#workflow" aria-label={`Learn about ${module.title}`}>Explore module <span>↗</span></a></article>)}
+        {modules.map((module) => <article class={`module-card module-${module.color}${module.websiteExample ? ' module-website-example' : ''}`}><figure class="module-shot"><img src={module.image} alt={module.imageAlt} loading="lazy" /><figcaption>{module.imageCaption}</figcaption></figure><div class="module-content"><div class="module-meta"><span class="module-number">{module.number}</span><span class="module-tag">{module.tag}</span></div><h3>{module.title}</h3><p>{module.copy}</p><a href="#workflow" aria-label={`Learn about ${module.title}`}>Explore module <span>↗</span></a></div></article>)}
       </div>
     </section>
 
