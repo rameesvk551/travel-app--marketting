@@ -227,3 +227,80 @@ body { background: #fff; color: var(--ink); }
 @media (min-width: 701px) and (max-width: 1000px) {
   .module-card, .module-card:first-child, .module-card:last-child { grid-column: auto; min-height: 390px; aspect-ratio: auto; }
 }
+
+/* A more memorable opening, grounded in the real product and a real destination. */
+.erp-hero { position: relative; overflow: hidden; padding-top: 44px; background: #f5eee6; }
+.hero-orb { display: block; position: absolute; z-index: 0; width: 510px; height: 510px; border: 1px solid rgba(184, 62, 46, .12); border-radius: 50%; background: rgba(184, 62, 46, .035); }
+.hero-orb-one { top: -295px; right: -120px; }
+.hero-orb-two { top: auto; right: 29%; bottom: -430px; width: 540px; height: 540px; }
+.hero-layout { position: relative; z-index: 1; grid-template-columns: .9fr 1.1fr; gap: clamp(35px, 6vw, 82px); align-items: center; padding-top: 58px; padding-bottom: 82px; }
+.hero-copy { max-width: 650px; }
+.hero-copy .eyebrow { display: flex; align-items: center; gap: 9px; color: #9d392d; font-weight: 800; }
+.hero-copy h1 { max-width: 650px; margin: 25px 0 22px; font-size: clamp(48px, 5.5vw, 76px); line-height: .98; letter-spacing: -4.7px; }
+.hero-copy h1 span { display: inline-block; color: #b83e2e; }
+.hero-lede { max-width: 475px; color: #4e5857; font-size: 16px; line-height: 1.7; }
+.hero-actions { gap: 11px; margin-top: 26px; }
+.hero-actions .button { min-height: 50px; padding: 0 19px; font-size: 12px; }
+.hero-actions .button-dark { background: #b83e2e; box-shadow: 0 8px 18px rgba(151, 48, 35, .15); }
+.hero-actions .button-light { border-color: #c8c2b9; background: rgba(255,255,255,.48); }
+.hero-note { margin-top: 24px; color: #6c716d; font-size: 10px; }
+.hero-note .note-check { color: #b83e2e; }
+.hero-visual { position: relative; min-width: 0; height: 510px; }
+.hero-travel-photo { position: absolute; inset: 0 0 22px 22px; margin: 0; overflow: hidden; border-radius: 12px; background: #70805c; box-shadow: 0 23px 54px rgba(43, 50, 41, .16); }
+.hero-travel-photo::after { position: absolute; inset: 45% 0 0; content: ''; background: linear-gradient(transparent, rgba(27, 40, 31, .58)); }
+.hero-travel-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 56%; }
+.hero-travel-photo figcaption { position: absolute; z-index: 1; right: 17px; bottom: 16px; left: 18px; display: flex; justify-content: space-between; gap: 12px; color: white; font-size: 8px; font-weight: 800; letter-spacing: .9px; }
+.hero-product-screen { position: absolute; z-index: 2; right: -25px; bottom: 20px; width: 77%; transform: rotate(-1deg); box-shadow: 0 22px 50px rgba(32, 39, 42, .24); }
+.hero-product-screen figcaption { font-size: 7px; }
+.hero-stamp { position: absolute; z-index: 3; top: 29px; left: -7px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 3px 15px; padding: 12px 15px; transform: rotate(-4deg); border-radius: 4px; background: #b83e2e; color: white; box-shadow: 0 9px 22px rgba(99, 40, 30, .23); }
+.hero-stamp span { font-size: 7px; font-weight: 700; letter-spacing: 1px; }
+.hero-stamp strong { font-size: 11px; letter-spacing: .6px; }
+.hero-stamp i { grid-column: 2; grid-row: 1 / span 2; font-size: 20px; font-style: normal; }
+.hero-bottom { border-top: 0; background: #28363a; color: #fff; }
+.hero-bottom-inner { min-height: 62px; }
+.hero-bottom-inner>span, .hero-bottom-inner>div, .hero-bottom-inner>a { color: rgba(255,255,255,.82); }
+.hero-bottom-inner b { color: #ffab8e; }
+
+/* Give the module index one wide product feature, six focused product tiles, and a destination-led close. */
+.module-card:first-child { display: grid; grid-template-columns: .95fr 1.25fr; min-height: 400px; aspect-ratio: auto; border-radius: 8px; background: #b83e2e; }
+.module-card:first-child .module-shot { position: relative; inset: auto; height: 100%; min-height: 400px; border: 0; background: #f1f3f4; }
+.module-card:first-child .module-shot img { object-fit: contain; }
+.module-card:first-child .module-shot::after { display: none; }
+.module-card:first-child .module-shot figcaption { top: auto; bottom: 14px; }
+.module-card:first-child .module-content { position: relative; right: auto; bottom: auto; left: auto; min-height: 0; justify-content: center; padding: clamp(25px, 4vw, 56px); background: linear-gradient(140deg, #b83e2e, #8f2928); }
+.module-card:first-child .module-number { color: #ffd4c9; }
+.module-card:first-child .module-tag { color: rgba(255,255,255,.74); }
+.module-card:first-child .module-card h3, .module-card:first-child h3 { max-width: 430px; font-size: clamp(27px, 3vw, 38px); }
+.module-card:first-child p { max-width: 390px; font-size: 14px; }
+.module-card:first-child>a { margin-top: 19px; }
+.module-card:last-child { border-radius: 8px; }
+.module-card:last-child .module-shot img { object-position: center 55%; }
+.module-card:nth-child(2), .module-card:nth-child(4), .module-card:nth-child(7) { border-radius: 8px; }
+.module-card:nth-child(3) .module-shot img { object-position: center 20%; }
+
+@media (max-width: 1000px) {
+  .hero-layout { grid-template-columns: .95fr 1.05fr; gap: 34px; }
+  .hero-visual { height: 450px; }
+  .hero-product-screen { right: -16px; width: 83%; }
+}
+@media (max-width: 700px) {
+  .erp-hero { padding-top: 25px; }
+  .hero-layout { grid-template-columns: 1fr; gap: 25px; padding-top: 32px; padding-bottom: 45px; }
+  .hero-copy h1 { margin: 19px 0 15px; font-size: clamp(42px, 11vw, 58px); line-height: 1; letter-spacing: -3px; }
+  .hero-copy h1 span { letter-spacing: inherit; }
+  .hero-lede { font-size: 14px; }
+  .hero-actions { flex-wrap: wrap; }
+  .hero-visual { height: 365px; margin: 0 8px; }
+  .hero-travel-photo { inset: 0 0 24px 12px; }
+  .hero-product-screen { right: -8px; bottom: 13px; width: 88%; transform: rotate(-1deg); }
+  .hero-stamp { top: 15px; left: -10px; transform: rotate(-3deg) scale(.9); transform-origin: top left; }
+  .hero-travel-photo figcaption { right: 10px; bottom: 11px; left: 11px; font-size: 6px; }
+  .hero-bottom-inner { flex-wrap: wrap; justify-content: center; gap: 8px; padding: 11px 0; text-align: center; }
+  .hero-bottom-inner>div { font-size: 9px; }
+  .module-card:first-child { grid-column: auto; grid-template-columns: 1fr; min-height: 0; }
+  .module-card:first-child .module-shot { min-height: 240px; height: auto; aspect-ratio: 1.55; }
+  .module-card:first-child .module-content { min-height: 270px; padding: 21px; }
+  .module-card:first-child h3 { font-size: 26px; }
+  .module-card:first-child p { font-size: 12px; }
+  .module-card:last-child { min-height: 385px; }
+}
