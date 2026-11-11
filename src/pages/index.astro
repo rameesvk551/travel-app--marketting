@@ -4,21 +4,21 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 const modules = [
-  { number: '01', icon: '◎', title: 'Leads & follow-ups', tag: 'CRM', copy: 'See enquiries from WhatsApp, Instagram, your website and calls. Assign an owner, move the stage and set the next follow-up.', color: 'coral' },
-  { number: '02', icon: '♙', title: 'Traveller records', tag: 'CUSTOMERS', copy: 'Keep traveller details, passport expiry, documents and recent conversations with the customer profile.', color: 'blue' },
+  { number: '01', icon: '◎', title: 'Lead management & CRM', tag: 'SALES PIPELINE', copy: 'Capture enquiries from WhatsApp, Instagram, your website and calls. Assign owners, track stages, schedule follow-ups and keep traveller details with each customer.', color: 'coral' },
+  { number: '02', icon: '◉', title: 'WhatsApp campaigns', tag: 'BULK MARKETING', copy: 'Organize opted-in contacts and prepare targeted bulk campaign messages for offers, seasonal packages and follow-ups.', color: 'blue' },
   { number: '03', icon: '▤', title: 'Quotes & itineraries', tag: 'SALES', copy: 'Build a route, add line items and send a clear quote using reusable templates and INR pricing.', color: 'green' },
   { number: '04', icon: '▣', title: 'Bookings & packages', tag: 'RESERVATIONS', copy: 'See reservations by status alongside what has been collected and what is still due.', color: 'purple' },
-  { number: '05', icon: '₹', title: 'Finance & reports', tag: 'ACCOUNTS', copy: 'Issue invoices, record receipts, follow customer balances and review vendor payables.', color: 'yellow' },
-  { number: '06', icon: '⌁', title: 'Trip operations', tag: 'ON THE GROUND', copy: 'Keep the itinerary, hotel confirmations, pickup details and supplier contacts with the trip.', color: 'mint' },
-  { number: '07', icon: '◷', title: 'Team & attendance', tag: 'PEOPLE', copy: 'Manage staff profiles, daily attendance, leave and payroll in the same workspace.', color: 'coral' },
-  { number: '08', icon: '↗', title: 'Agency website', tag: 'YOUR BRAND', copy: 'Show your packages under your own name and give visitors a direct route to enquire.', color: 'blue' },
+  { number: '05', icon: '₹', title: 'Accounts & finance', tag: 'ACCOUNTS', copy: 'Issue invoices, record receipts, follow customer balances, review vendor payables and track financial reports.', color: 'yellow' },
+  { number: '06', icon: '⌁', title: 'Trip operations & suppliers', tag: 'ON THE GROUND', copy: 'Keep itineraries, hotel confirmations, pickup details, supplier contacts and traveller documents with each trip.', color: 'mint' },
+  { number: '07', icon: '◷', title: 'HRM & attendance', tag: 'PEOPLE', copy: 'Keep staff profiles, daily attendance, leave and payroll information together for your travel team.', color: 'coral' },
+  { number: '08', icon: '↗', title: 'Website builder', tag: 'YOUR BRAND', copy: 'Show your packages under your own agency brand and give visitors a direct route to enquire.', color: 'blue' },
 ];
 
 const faqs = [
   ['Who is Wayon for?', 'Wayon is built for travel agencies and tour operators that manage enquiries, package bookings and day-to-day trip operations.'],
   ['Can I use my own brand on my website?', 'The website builder section is designed around your agency identity, so your packages can be presented under your own brand.'],
   ['Can Wayon collect booking requests?', 'Yes. An agency can collect booking requests from its website and manage them in Wayon. This marketing page is a static demo; its form only opens an email draft and is not connected to a live booking system.'],
-  ['Can I manage sales and trip delivery?', 'The workspace covers enquiries and follow-ups, quotations, package bookings, customer records, payments and trip details.'],
+  ['Can I manage sales and trip delivery?', 'The workspace covers lead management, WhatsApp campaigns, quotations, package bookings, accounts, HRM and trip details.'],
 ];
 ---
 
@@ -49,7 +49,7 @@ const faqs = [
 
     <section class="intro-section erp-wrap" id="platform">
       <div class="section-kicker">YOUR WHOLE DESK, IN SYNC</div>
-      <div class="intro-grid"><h2>A trip has a lot of moving parts.<br /><span>Keep them together.</span></h2><p>A family’s room preference, the hotel confirmation, the driver’s number and the balance due all belong to one booking. Sales and operations can pick up the same details as the trip moves forward.</p></div>
+  <div class="intro-grid"><h2>A trip has a lot of moving parts.<br /><span>Keep them together.</span></h2><p>Bring lead management, WhatsApp campaigns, bookings, accounts and HRM into the same travel workspace. Sales and operations can pick up the same traveller and trip details as work moves forward.</p></div>
       <div class="module-grid">
         {modules.map((module) => <article class={`module-card module-${module.color}`}><div class="module-top"><span class="module-icon">{module.icon}</span><span class="module-number">{module.number}</span></div><div class="module-tag">{module.tag}</div><h3>{module.title}</h3><p>{module.copy}</p><a href="#workflow" aria-label={`Learn about ${module.title}`}>Explore module <span>↗</span></a></article>)}
       </div>
@@ -65,7 +65,7 @@ const faqs = [
 
     <section class="faq-section erp-wrap" id="faq"><div class="faq-intro"><div class="section-kicker">A FEW GOOD QUESTIONS</div><h2>Before we<br /><span>take off.</span></h2><p>Want to see how the pieces fit together? Start with the basics, then tell us how your team works.</p></div><div class="faq-list">{faqs.map(([question, answer], i) => <details class="faq-row" open={i === 0}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</div></section>
 
-    <section class="demo-section" id="demo"><div class="erp-wrap demo-grid"><div><div class="section-kicker">LET’S MAP YOUR WORKFLOW</div><h2>Show us how your<br /><span>travel desk works.</span></h2><p>Tell us what your team sells and where the handoffs get stuck. Your email app will open with a draft for a Wayon walkthrough.</p><div class="demo-promise"><span>✳</span><div><strong>Made for travel teams</strong><small>Agencies · Tour operators · DMCs</small></div></div></div><form class="demo-form" id="demo-form"><label>Your name<input name="name" autocomplete="name" placeholder="e.g. Alex Rivera" required /></label><label>Work email<input type="email" name="email" autocomplete="email" placeholder="you@youragency.com" required /></label><label>What would you like to manage?<select name="interest"><option>CRM and enquiries</option><option>Bookings and payments</option><option>Trip operations</option><option>Branded website builder</option><option>Everything in one place</option></select></label><button type="submit" class="button button-dark">Request a conversation <span>↗</span></button><small class="form-note">This static demo opens a prefilled email draft. No form data is stored on this page.</small></form></div></section>
+    <section class="demo-section" id="demo"><div class="erp-wrap demo-grid"><div><div class="section-kicker">LET’S MAP YOUR WORKFLOW</div><h2>Show us how your<br /><span>travel desk works.</span></h2><p>Tell us what your team sells and where the handoffs get stuck. Your email app will open with a draft for a Wayon walkthrough.</p><div class="demo-promise"><span>✳</span><div><strong>Made for travel teams</strong><small>Agencies · Tour operators · DMCs</small></div></div></div><form class="demo-form" id="demo-form"><label>Your name<input name="name" autocomplete="name" placeholder="e.g. Alex Rivera" required /></label><label>Work email<input type="email" name="email" autocomplete="email" placeholder="you@youragency.com" required /></label><label>What would you like to manage?<select name="interest"><option>Lead management and CRM</option><option>WhatsApp bulk marketing</option><option>Bookings and accounts</option><option>HRM and attendance</option><option>Trip operations</option><option>Agency website builder</option><option>Everything in one place</option></select></label><button type="submit" class="button button-dark">Request a conversation <span>↗</span></button><small class="form-note">This static demo opens a prefilled email draft. No form data is stored on this page.</small></form></div></section>
   </main>
   <Footer />
 </BaseLayout>
